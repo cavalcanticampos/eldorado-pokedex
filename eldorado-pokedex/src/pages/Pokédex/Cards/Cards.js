@@ -1,47 +1,55 @@
 import React from "react";
-import "./Cards.css";
+
+import {
+  Container,
+  Wrapper,
+  Column,
+  Skill,
+  Attack,
+  Defese,
+  Grass,
+  Image,
+} from "./StylesCard";
 
 export default function Cards({ Pokemonsdata, loading }) {
   return (
-    <div className="container-cards">
+    <Container>
       {loading ? (
-        <div class="lds-circle">
-          <div></div>
-        </div>
+            <h4>Carregando.....</h4>
       ) : (
         <>
           {Pokemonsdata.map((pokemon) => (
-            <div className="content-cards">
-              <div className="cards-col">
-                <h3 className="cards-title">{pokemon.name}</h3>
-                <div className="skills">
-                  <div className="attack">
-                    <span className="cards-value">409</span>
-                    <p className="skills-pokemons">Ataque</p>
-                  </div>
+            <Wrapper>
+              <Column>
+                <h3>{pokemon.name}</h3>
+                <Skill>
+                  <Attack>
+                    <span>409</span>
+                    <p>Ataque</p>
+                  </Attack>
 
-                  <div className="defese">
-                    <span className="cards-value">49</span>
-                    <p className="skills-pokemons">defesa</p>
-                  </div>
-                </div>
-                <div className="grass">
-                  <span className="grass-p">grass</span>
-                  <span className="poison-p">poison</span>
-                </div>
-              </div>
+                  <Defese>
+                    <span>49</span>
+                    <p>defesa</p>
+                  </Defese>
+                </Skill>
+                <Grass >
+                  <span >grass</span>
+                  <span>poison</span>
+                </Grass>
+              </Column>
 
-              <div className="container-img">
+              <Image>
                 <img
-                  className="img-cards"
+                  
                   alt={pokemon.name}
                   src={pokemon.sprites.front_default}
                 />
-              </div>
-            </div>
+              </Image>
+            </Wrapper>
           ))}
         </>
       )}
-    </div>
+    </Container>
   );
 }

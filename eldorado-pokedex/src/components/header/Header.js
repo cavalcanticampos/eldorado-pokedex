@@ -1,25 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+
 import Logo from "../../assets/Logo.png";
+import { Menu } from "./HeaderStyles";
 
 function Header() {
   return (
-    <nav className="container-header">
+    <Menu>
       <img src={Logo} alt="lets go" />
       <ul>
         <li>
-          <Link to="/" className="link-header">
-            Home
+          <Link to="/">
+            <a  href="##">
+              Home
+            </a>
           </Link>
         </li>
         <li>
-          <Link to="/Pokedex" className="link-header">
-            Pokedex
+          <Link to="/Pokedex">
+            <a href="##">
+              Pokedex
+            </a>
           </Link>
         </li>
       </ul>
-    </nav>
+    </Menu>
   );
 }
 

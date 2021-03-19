@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../../../service/api";
 import Cards from "../Cards/Cards";
-import "./Search.css";
+
+import { Container ,Wrapper } from "./StylesSearch";
 
 export default function Search() {
   const [Pokemonsdata, setPokemonsdata] = useState([]);
@@ -36,8 +37,8 @@ export default function Search() {
   console.log(Pokemonsdata);
 
   return (
-    <div className="group">
-      <div className="search-container">
+    <Container>
+      <Wrapper>
         <h3 className="search-title">
         800 Pokémons para você escolher o seu favorito
         </h3>
@@ -48,8 +49,8 @@ export default function Search() {
         value={search}
         onChange={(e)=>setSearch(e.target.value)}
         />
-      </div>
+      </Wrapper>
       <Cards Pokemonsdata={Pokemonsdata} loading={loading} />
-    </div>
+    </Container>
   );
 }
