@@ -40,7 +40,7 @@ export default function Search() {
     <Container>
       <Wrapper>
         <h3 className="search-title">
-        800 Pokémons para você escolher o seu favorito
+        100 Pokémons para você escolher o seu favorito
         </h3>
 
         <input 

@@ -15,7 +15,7 @@ export default function Cards({ Pokemonsdata, loading }) {
   return (
     <Container>
       {loading ? (
-            <h4>Carregando.....</h4>
+        <h4>Carregando..</h4>
       ) : (
         <>
           {Pokemonsdata.map((pokemon) => (
@@ -33,18 +33,14 @@ export default function Cards({ Pokemonsdata, loading }) {
                     <p>defesa</p>
                   </Defese>
                 </Skill>
-                <Grass >
-                  <span >grass</span>
+                <Grass>
+                  <span>grass</span>
                   <span>poison</span>
                 </Grass>
               </Column>
 
               <Image>
-                <img
-                  
-                  alt={pokemon.name}
-                  src={pokemon.sprites.front_default}
-                />
+                <img alt={pokemon.name} src={pokemon.sprites.front_default} />
               </Image>
             </Wrapper>
           ))}
