@@ -15,7 +15,7 @@ export default function Cards({ Pokemonsdata, loading }) {
   return (
     <Container>
       {loading ? (
-        <h4>Carregando..</h4>
+        <h4>Carregando.......</h4>
       ) : (
         <>
           {Pokemonsdata.map((pokemon) => (
