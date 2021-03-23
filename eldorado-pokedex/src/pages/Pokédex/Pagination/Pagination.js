@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Container, Item } from './StylesPagination'
 
-function Pagination({limit,total,offset}) {
+function Pagination() {
+    const [active, setActive] = useState(1)
 
-    
     return (
-        <div>
-           paginaçao 
-        </div>
+        <Container>
+            {
+                active - 1 === 0 ?
+                '' :
+                <Item>
+                    {active - 1}
+                </Item> 
+            }
+            <Item>
+                {active}
+            </Item> 
+            <Item>
+                {active + 1}
+            </Item> 
+        </Container>
     )
-}
+    }
 
 export default Pagination

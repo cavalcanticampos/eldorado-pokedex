@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../../../service/api";
 import Cards from "../Cards/Cards";
-import { Container, Wrapper } from "./StylesSearch";
+import { Container, Wrapper, InputSearch, Container2 } from "./StylesSearch";
 
 export default function Search() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -24,19 +24,21 @@ export default function Search() {
       })
     );
     setPokemonData(_pokemonData);
-   
   };
 
   console.log(pokemonData);
   return (
-    <Container>
-      <Wrapper>
-        <h3 className="search-title">
-          100 Pokémons para você escolher o seu favorito
-        </h3>
-        <input placeholder="Encontre seu pokémon" className="input-search" />
-      </Wrapper>
-    <Cards  pokemonData={pokemonData}/>
-    </Container>
+    <Container2>
+      <InputSearch placeholder="Encontre seu pokémon" className="input-search" />
+    </Container2>
   );
 }
+
+// // <Container>
+    //   <Wrapper>
+        {/* <h3 className="search-title">
+          100 Pokémons para você escolher o seu favorito
+        </h3> */}
+      // </Wrapper>
+      // <Cards  pokemonData={pokemonData}/>
+    // </Container>
