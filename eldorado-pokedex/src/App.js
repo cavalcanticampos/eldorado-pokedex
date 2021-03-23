@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+ 
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
 
 import React from "react";
 import Header from "./components/header/Header";
@@ -10,15 +14,13 @@ function App() {
   return (
     <>
       <Router>
-        <GlobalStyle/>
-        <div >
+        <GlobalStyle />
+        <div>
           <Header />
           <Route path="/" exact component={Home} />
           <Route path="/Pokedex" component={Pokédex} />
         </div>
-      
       </Router>
-     
     </>
   );
 }

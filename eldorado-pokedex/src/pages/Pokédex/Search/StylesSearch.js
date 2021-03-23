@@ -7,14 +7,18 @@ export const Container = styled.div`
   top: 166px;
   border-radius: 0px;
   margin: 0 auto;
+  
+  
 `;
 
 export const Wrapper = styled.div`
+
   height: 149px;
   width: 1088px;
   left: 0px;
   top: 0px;
   border-radius: 0px;
+  margin: 0 auto;
 
   & > h3 {
     margin-top: 73px;
@@ -26,7 +30,6 @@ export const Wrapper = styled.div`
     text-align: center;
     letter-spacing: 3px;
     color: #000000;
-    
   }
 
   & > input {
@@ -44,6 +47,7 @@ export const Wrapper = styled.div`
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
+
     color: rgba(24, 22, 22, 0.8);
   }
 `;

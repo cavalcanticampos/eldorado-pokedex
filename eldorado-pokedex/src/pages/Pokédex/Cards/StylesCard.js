@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContainerCard= styled.div`
   height: 500px;
   width: 1125px;
   left: 158px;
@@ -11,6 +11,9 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 109.85px;
+  
+ 
+ 
 `;
 
 export const Wrapper = styled.div`
@@ -24,6 +27,8 @@ export const Wrapper = styled.div`
   align-content: center;
   justify-content: space-between;
   box-shadow: 4px 4px 4px 0px #212121 10%;
+
+ 
 `;
 
 export const Column = styled.div`
@@ -163,7 +168,7 @@ export const Grass = styled.div`
   }
 `;
 export const Image = styled.div`
-  background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/100.png");
+  background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/595.png");
   height: 136.86154174804688px;
   width: 232.25103759765625px;
   left: 0px;
@@ -172,7 +177,7 @@ export const Image = styled.div`
   display: flex;
   align-items: center;
 
-  & > img-cards {
+  & > img {
     height: 156.52120971679688px;
     width: 167.8395538330078px;
     left: 0.8125px;

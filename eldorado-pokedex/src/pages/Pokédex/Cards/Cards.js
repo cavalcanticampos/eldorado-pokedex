@@ -1,7 +1,8 @@
 import React from "react";
-
+import Pagination from '../Pagination/Pagination';
 import {
-  Container,
+
+  ContainerCard,
   Wrapper,
   Column,
   Skill,
@@ -11,41 +12,46 @@ import {
   Image,
 } from "./StylesCard";
 
-export default function Cards({ Pokemonsdata, loading }) {
+export default function Cards({ pokemonData }) {
   return (
-    <Container>
-      {loading ? (
-        <h4>Carregando.......</h4>
-      ) : (
-        <>
-          {Pokemonsdata.map((pokemon) => (
-            <Wrapper>
-              <Column>
-                <h3>{pokemon.name}</h3>
-                <Skill>
-                  <Attack>
-                    <span>409</span>
-                    <p>Ataque</p>
-                  </Attack>
 
-                  <Defese>
-                    <span>49</span>
-                    <p>defesa</p>
-                  </Defese>
-                </Skill>
-                <Grass>
-                  <span>grass</span>
-                  <span>poison</span>
-                </Grass>
-              </Column>
+  
 
-              <Image>
-                <img alt={pokemon.name} src={pokemon.sprites.front_default} />
-              </Image>
-            </Wrapper>
-          ))}
-        </>
-      )}
-    </Container>
+ 
+
+    <ContainerCard>
+      <>
+    {pokemonData.map((pokemon) => (
+
+      <Wrapper>
+      <Column>
+        <h3>{pokemon.name}</h3>
+        <Skill>
+          <Attack>
+            <span>409</span>
+            <p>Ataque</p>
+          </Attack>
+
+          <Defese>
+            <span>49</span>
+            <p>defesa</p>
+          </Defese>
+        </Skill>
+        <Grass>
+          <span>grass</span>
+          <span>poison</span>
+        </Grass>
+      </Column>
+
+      <Image>
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+      </Image>
+    </Wrapper>
+        
+      ))}
+      </>
+      <Pagination/>
+      </ContainerCard>
+   
   );
 }
