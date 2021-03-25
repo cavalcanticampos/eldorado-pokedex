@@ -5,8 +5,10 @@ export const Menu = styled.nav`
   display: flex;
   width: 100%;
   height: 93px;
-  background: #f5db13;
-  box-shadow: inset 0px 4px 20px 0px rgb(0 0 0 / 20%);
+  background: #F5DB13;
+ 
+  box-shadow: 0px 4px 16px 0px rgba(1, 28, 64, 0.2);
+
   align-items: center;
   justify-content: space-around;
 

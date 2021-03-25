@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-
+  display:flex;
   height: 1024px;
   max-width: 14400px;
   width: 100%;
@@ -18,7 +19,6 @@ export const WrapperHome = styled.div`
 
   & > article {
     height: 680px;
-    width: 793px;
     left: 648px;
     top: 160px;
     border-radius: 0px;
@@ -57,7 +57,11 @@ export const GroupHome = styled.section`
     top: 0px;
     background: #73d676;
     box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+    border: 1px solid;
     border-radius: 11px;
+     & > Link{
+       text-decoration:none;
+     }
 
     & > p {
       font-style: normal;

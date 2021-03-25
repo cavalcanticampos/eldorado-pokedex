@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../../../service/api";
 import Cards from "../Cards/Cards";
-import { Container, Wrapper, InputSearch, Container2 } from "./StylesSearch";
+import { InputSearch } from "./StylesSearch";
 
 export default function Search() {
   const [pokemonData, setPokemonData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filtersearch, setFiltersearch] = useState([]);
 
   const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=9S&offset=0";
 
@@ -25,20 +27,27 @@ export default function Search() {
     );
     setPokemonData(_pokemonData);
   };
-
   console.log(pokemonData);
+
+  useEffect(() => {
+    setFiltersearch(
+      pokemonData.filter((pokemons) =>
+        pokemons.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, pokemonData]);
+
   return (
-    <Container2>
-      <InputSearch placeholder="Encontre seu pokémon" className="input-search" />
-    </Container2>
+    <>
+      <InputSearch>
+        <input
+          placeholder="Encontre seu pokemon.."
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </InputSearch>
+      <Cards filtersearch={filtersearch} />
+    </>
   );
 }
-
-// // <Container>
-    //   <Wrapper>
-        {/* <h3 className="search-title">
-          100 Pokémons para você escolher o seu favorito
-        </h3> */}
-      // </Wrapper>
-      // <Cards  pokemonData={pokemonData}/>
-    // </Container>

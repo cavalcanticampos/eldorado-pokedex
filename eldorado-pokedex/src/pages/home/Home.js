@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Banner from "../../assets/Banner.png";
 import { Container, GroupHome, WrapperHome } from "./HomeStyles";
 
@@ -16,7 +17,9 @@ function Home() {
             <br /> habilidades
           </h2>
           <button>
-            <p>Ver pokemons</p>
+            <Link to ="/pokedex">
+              <p>Ver pokemons</p>
+            </Link>
           </button>
         </GroupHome>
         <article>

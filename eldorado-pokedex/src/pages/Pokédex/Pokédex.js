@@ -1,20 +1,17 @@
 import React from "react";
 import Search from "./Search/Search";
-import { Container, Wrapper } from "../Pokédex/Search/StylesSearch";
-import Cards from '../Pokédex/Cards/Cards'
+import { Container, Title } from "./Stylespokedex";
+
 
 function Pokédex() {
   return (
     <>
       <Container>
-        <Wrapper>
-          <h3 className="search-title">
-           100 Pokémons para você escolher o seu favorito
-          </h3>
-        </Wrapper>
+        <Title>
+          <h3>Pokémons para você escolher o seu favorito</h3>
+        </Title>
+        <Search />
       </Container>
-      <Search />
-      <Cards />
     </>
   );
 }

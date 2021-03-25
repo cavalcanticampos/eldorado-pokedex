@@ -78,6 +78,8 @@ export const Attack = styled.div`
     line-height: 18px;
     display: flex;
     align-content: center;
+    justify-content: center;
+    
   }
 
   & > p {
@@ -109,6 +111,8 @@ export const Defese = styled.div`
     line-height: 18px;
     display: flex;
     align-content: center;
+    justify-content:center;
+
   }
 
   & > p {

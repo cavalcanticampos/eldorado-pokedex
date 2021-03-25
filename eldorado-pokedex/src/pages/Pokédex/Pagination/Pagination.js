@@ -9,7 +9,7 @@ function Pagination() {
             {
                 active - 1 === 0 ?
                 '' :
-                <Item>
+                <Item >
                     {active - 1}
                 </Item> 
             }
@@ -20,6 +20,9 @@ function Pagination() {
                 {active + 1}
             </Item> 
         </Container>
+
+
+
     )
     }
 
