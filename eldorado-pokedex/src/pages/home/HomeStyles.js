@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-  display:flex;
+  display: flex;
   height: 1024px;
   max-width: 14400px;
   width: 100%;
@@ -59,18 +59,16 @@ export const GroupHome = styled.section`
     box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
     border: 1px solid;
     border-radius: 11px;
-     & > Link{
-       text-decoration:none;
-     }
 
-    & > p {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 23px;
-      line-height: 27px;
-      align-items: center;
-      text-align: center;
-      color: #212121;
-    }
   }
+`;
+export const StyledLink = styled(Link)`
+  font-size: 23px;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 27px;
+  align-items: center;
+  text-align: center;
+  color: #212121;
 `;
