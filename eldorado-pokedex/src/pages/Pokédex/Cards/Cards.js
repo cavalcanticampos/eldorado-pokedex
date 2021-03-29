@@ -13,7 +13,7 @@ import {
 } from "./StylesCard";
 import { Container, Item } from "../Pagination/StylesPagination";
 
-export default function Cards({filtersearch}) {
+export default function Cards() {
   const [pokemonData, setPokemonData] = useState([]);
   const [active, setActive] = useState(1);
   const [currentOffset, setCurrentOffset] = useState(0);
@@ -67,7 +67,7 @@ export default function Cards({filtersearch}) {
   return (
     <>
       <ContainerCard>
-        {filtersearch.map((pokemons) => (
+        {pokemonData.map((pokemons) => (
           <Wrapper>
             <Column>
               <h3>{pokemons.name}</h3>

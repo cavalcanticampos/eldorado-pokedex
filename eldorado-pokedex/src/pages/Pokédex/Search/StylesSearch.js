@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputSearch = styled.div`
  
-
+ display:flex;
  & > input{
   width: 1088px;
   height: 53px;

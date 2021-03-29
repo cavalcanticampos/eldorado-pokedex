@@ -11,16 +11,12 @@ function Header() {
       <ul>
         <li>
           <Link to="/">
-            <a  href="##">
-              Home
-            </a>
+            <a href="##">Home</a>
           </Link>
         </li>
         <li>
           <Link to="/Pokedex">
-            <a href="##">
-              Pokedex
-            </a>
+            <a href="##">Pokedex</a>
           </Link>
         </li>
       </ul>

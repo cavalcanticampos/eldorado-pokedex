@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getAllPokemon, getPokemon } from "../../../service/api";
-import Cards from "../Cards/Cards";
 import { InputSearch } from "./StylesSearch";
+
+
 
 export default function Search() {
   const [pokemonData, setPokemonData] = useState([]);
   const [search, setSearch] = useState("");
-  const [filtersearch, setFiltersearch] = useState([]);
 
-  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=9S&offset=0";
+  const initialURL = "https://pokeapi.co/api/v2/pokemon?limit=100S&offset=0";
 
   useEffect(() => {
     async function fetchData() {
@@ -27,27 +27,32 @@ export default function Search() {
     );
     setPokemonData(_pokemonData);
   };
-  console.log(pokemonData);
+  console.log(search)
 
-  useEffect(() => {
-    setFiltersearch(
-      pokemonData.filter((pokemons) =>
-        pokemons.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search, pokemonData]);
+  const Searchpokemon = async () => {
+  
+    let response = await getAllPokemon(
+      "https://pokeapi.co/api/v2/pokemon?limit=1200",
+     );
+     let suggestedPokemons = [];
+    response.results.forEach((data) => {
+      data.match(/`search`/) ? suggestedPokemons.push(data) : null
+    });
+    await loadPokemon(suggestedPokemons);
+
+    console.log(response)
+  };
 
   return (
     <>
       <InputSearch>
         <input
-          placeholder="Encontre seu pokemon.."
+          placeholder="Eyncontre seu pokemon.."
           type="text"
-          value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <button onClick={Searchpokemon}>Buscar</button>
       </InputSearch>
-      <Cards filtersearch={filtersearch} />
     </>
   );
 }
