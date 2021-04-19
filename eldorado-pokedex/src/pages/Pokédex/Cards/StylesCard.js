@@ -4,7 +4,7 @@ export const ContainerCard= styled.div`
   height: 500px;
   width: 1125px;
   left: 158px;
-  top: 403.84765625px;
+  top: 403.8px;
   margin: 0 auto;
   display: flex;
   align-content: space-between;
@@ -98,8 +98,8 @@ export const Defese = styled.div`
   display: flex;
   flex-direction: column;
   & > span {
-    height: 36.04155349731445px;
-    width: 37.9530029296875px;
+    height: 36px;
+    width: 37.9px;
     border-radius: 80px;
     border: 3px solid #212121;
     box-sizing: border-box;

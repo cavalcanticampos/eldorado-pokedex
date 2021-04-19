@@ -3,15 +3,14 @@ import styled from "styled-components";
 
 export const Menu = styled.nav`
   display: flex;
-  width: 100%;
+  width: 90%;
+  max-width:1125px;
+  margin: 0 auto;
   height: 93px;
   background: #F5DB13;
- 
   box-shadow: 0px 4px 16px 0px rgba(1, 28, 64, 0.2);
-
   align-items: center;
   justify-content: space-around;
-
   & > img {
     font-style: normal;
     font-weight: normal;
@@ -19,7 +18,6 @@ export const Menu = styled.nav`
     line-height: 29px;
     color: #212121;
   }
-
   & > ul {
     list-style: none;
     height: 45px;
