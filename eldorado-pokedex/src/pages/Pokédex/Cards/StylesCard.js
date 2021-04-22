@@ -1,34 +1,36 @@
 import styled from "styled-components";
 
-export const ContainerCard= styled.div`
-  height: 500px;
-  width: 1125px;
-  left: 158px;
-  top: 403.8px;
-  margin: 0 auto;
+export const ContainerCard = styled.div`
+  height: 500.69px;
+
   display: flex;
-  align-content: space-between;
-  justify-content: space-between;
+
   flex-wrap: wrap;
   margin-top: 109.85px;
-  
- 
- 
+
+  justify-content: space-between;
+  margin: auto;
 `;
 
 export const Wrapper = styled.div`
   height: 136px;
-  width: 351.8955383300781px;
-  border-radius: 8px;
-  border-radius: 8px;
+  width: 31.3%;
   background: #f6f7f9;
   border-radius: 8px;
+  flex-shrink: 2;
   display: flex;
   align-content: center;
-  justify-content: space-between;
-  box-shadow: 4px 4px 4px 0px #212121 10%;
 
- 
+  box-shadow: 4px 4px 4px 0px #212121 10%;
+  margin: 1%;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  &:nth-child(3n + 1) {
+    margin-left: 0;
+  }
 `;
 
 export const Column = styled.div`
@@ -79,7 +81,6 @@ export const Attack = styled.div`
     display: flex;
     align-content: center;
     justify-content: center;
-    
   }
 
   & > p {
@@ -111,8 +112,7 @@ export const Defese = styled.div`
     line-height: 18px;
     display: flex;
     align-content: center;
-    justify-content:center;
-
+    justify-content: center;
   }
 
   & > p {
@@ -188,31 +188,4 @@ export const Image = styled.div`
     top: -9.828125px;
     border-radius: 0px;
   }
-`
-;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-
-
+`;

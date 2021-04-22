@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
+
+
 export const InputSearch = styled.div`
  
  display:flex;
+ flex-direction:column;
+ align-items:center;
+
  & > input{
   width: 1088px;
   height: 53px;
@@ -24,5 +29,18 @@ export const InputSearch = styled.div`
   padding-bottom:17px;
   padding-left:31px 
   }
+
+  & > button {
+    height:30px;
+    background:#0AC5D4;
+    width:10%;
+    margin-top:30px;
+    border: 1px solid rgba(242,242,242,1);
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+  }
+
+ 
  
 `;

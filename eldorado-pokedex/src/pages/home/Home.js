@@ -21,9 +21,9 @@ function Home() {
             </StyledLink>
           </button>
         </GroupHome>
-        <article>
+      
           <img src={Banner} alt="banner" className="banner-home" />
-        </article>
+       
       </WrapperHome>
     </Container>
   );

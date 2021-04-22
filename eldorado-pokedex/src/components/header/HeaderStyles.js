@@ -1,16 +1,17 @@
 import styled from "styled-components";
-
+export const MainHeader = styled.header`
+  background: #f5db13;
+  box-shadow: 0px 4px 16px 0px rgba(1, 28, 64, 0.2);
+`;
 
 export const Menu = styled.nav`
   display: flex;
-  width: 90%;
-  max-width:1125px;
+  width: 63%;
   margin: 0 auto;
   height: 93px;
-  background: #F5DB13;
-  box-shadow: 0px 4px 16px 0px rgba(1, 28, 64, 0.2);
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  
   & > img {
     font-style: normal;
     font-weight: normal;
@@ -21,15 +22,13 @@ export const Menu = styled.nav`
   & > ul {
     list-style: none;
     height: 45px;
-    width: 657.469970703125px;
-    left: 624.53515625px;
-    top: 23px;
-    border-radius: 0px;
+
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 40%;
   }
-  & > ul  li a {
+  & > ul li a {
     display: block;
     text-decoration: none;
     height: 29px;
@@ -42,4 +41,5 @@ export const Menu = styled.nav`
     line-height: 29px;
     color: #212121;
   }
+ 
 `;

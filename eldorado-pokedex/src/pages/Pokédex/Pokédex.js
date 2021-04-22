@@ -6,7 +6,7 @@ import { getAllPokemon, getPokemon } from "../../service/api";
 
 function Pokédex() {
   const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonDefault, setPokemonDefault] = useState([]);
+  
 
   const [active, setActive] = useState(1);
   const [currentOffset, setCurrentOffset] = useState(0);
@@ -16,22 +16,20 @@ function Pokédex() {
     currentOffset * offset
   }`;
 
-  useEffect(() => {
-    if (search ===  "") {
-      return pokemonData;
-    }
-  }, []);
 
+ console.log(pokemonData)
   const handleInputSearch = (name) => {
     setSearch(name);
   };
 
-  const Searchpokemon = async () => {
+  const Searchpokemon = async (name) => {
+
+    
     var regex = `${search}`;
     var isSuggestedPokemon = new RegExp(regex, "g");
 
     let response = await getAllPokemon(
-      "https://pokeapi.co/api/v2/pokemon?limit=18"
+      "https://pokeapi.co/api/v2/pokemon?limit=200"
     );
     let suggestedPokemons = [];
     response.results.forEach((data) => {
@@ -41,7 +39,12 @@ function Pokédex() {
     });
     await loadPokemon(suggestedPokemons);
 
+    if(!search===''){
+      return <h1>erro</h1>
+    }
+
     console.log("suggestedPokemons ", suggestedPokemons);
+  
   };
 
   useEffect(() => {
@@ -60,7 +63,7 @@ function Pokédex() {
       })
     );
     setPokemonData(_pokemonData);
-    setPokemonDefault(_pokemonData);
+   
   };
 
   const nextPagePokemon = async () => {
