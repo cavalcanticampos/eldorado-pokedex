@@ -9,7 +9,7 @@ export const InputSearch = styled.div`
  align-items:center;
 
  & > input{
-  width: 1088px;
+ width:90%;
   height: 53px;
   display: flex;
   justify-content: center;

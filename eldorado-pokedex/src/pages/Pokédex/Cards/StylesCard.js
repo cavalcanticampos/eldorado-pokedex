@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerCard = styled.div`
+
+
+
   height: 500.69px;
-
   display: flex;
-
   flex-wrap: wrap;
   margin-top: 109.85px;
-
   justify-content: space-between;
   margin: auto;
 `;

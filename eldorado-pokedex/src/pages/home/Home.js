@@ -8,7 +8,7 @@ function Home() {
       <WrapperHome className="content-home">
         <GroupHome>
           <h1>
-            Encontre todos os seus <br /> Pokémon favoritos
+            Encontre todos os seus Pokémon favoritos
           </h1>
           <h2>
             Você pode saber o tipo de Pokémon,

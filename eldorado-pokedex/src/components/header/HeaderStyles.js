@@ -11,6 +11,9 @@ export const Menu = styled.nav`
   height: 93px;
   align-items: center;
   justify-content: space-between;
+
+
+
   
   & > img {
     font-style: normal;
@@ -41,5 +44,18 @@ export const Menu = styled.nav`
     line-height: 29px;
     color: #212121;
   }
- 
+  @media (max-width: 320px) {
+  text-align: center;
+  flex-direction:column;
+     
+   
+
+  ul{
+     width:90%;
+     margin-top:20px
+  }
+
+}
 `;
+
+
