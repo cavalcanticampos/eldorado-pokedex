@@ -5,57 +5,25 @@ export const MainHeader = styled.header`
 `;
 
 export const Menu = styled.nav`
-  display: flex;
-  width: 63%;
+  width:60%;
+  height:93px;
   margin: 0 auto;
-  height: 93px;
-  align-items: center;
-  justify-content: space-between;
-
-
-
-  
-  & > img {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 29px;
-    color: #212121;
-  }
-  & > ul {
-    list-style: none;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 40%;
-  }
-  & > ul li a {
-    display: block;
-    text-decoration: none;
-    height: 29px;
-    width: 67px;
-    left: 7.4609375px;
-    top: 0px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 29px;
-    color: #212121;
-  }
-  @media (max-width: 320px) {
-  text-align: center;
-  flex-direction:column;
-     
-   
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
   ul{
-     width:90%;
-     margin-top:20px
+    list-style:none;
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    width:40%;
   }
 
-}
-`;
-
-
+  a{
+    text-decoration:none;
+    font-size: 25px;
+    line-height: 29px;
+    color:#000000;
+  }
+  `

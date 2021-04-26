@@ -7,7 +7,7 @@ export default function Search({ handleInputSearch, Searchpokemon }) {
     <>
       <InputSearch>
         <input
-          placeholder="Eyncontre seu pokemon.."
+          placeholder="Encontre seu pokemon.."
           type="text"
           onChange={(e) => handleInputSearch(e.target.value)}
         />

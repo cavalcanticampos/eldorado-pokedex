@@ -3,27 +3,25 @@ import styled from "styled-components";
 export const ContainerCard = styled.div`
 
 
-
-  height: 500.69px;
+/*  height: 500.69px;     */
+ 
   display: flex;
   flex-wrap: wrap;
   margin-top: 109.85px;
   justify-content: space-between;
   margin: auto;
+ 
 `;
 
 export const Wrapper = styled.div`
-  height: 136px;
+  height: 136.86px;
   width: 31.3%;
   background: #f6f7f9;
   border-radius: 8px;
-  flex-shrink: 2;
   display: flex;
   align-content: center;
-
   box-shadow: 4px 4px 4px 0px #212121 10%;
   margin: 1%;
-
   &:nth-child(3n) {
     margin-right: 0;
   }
@@ -34,6 +32,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Column = styled.div`
+width:60%;
+
+ overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,9 +50,10 @@ export const Column = styled.div`
     line-height: 21px;
     color: #212121;
     text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
-    margin-left: 25.95px;
+    margin-left:  70px;
     margin-top: 10px;
   }
+   
 `;
 
 export const Skill = styled.div`
@@ -128,24 +130,25 @@ export const Defese = styled.div`
 `;
 
 export const Grass = styled.div`
+width:80%;
   display: flex;
   align-items: center;
   height: 15.87896728515625px;
   width: 132.97434997558594px;
-  left: 25.9453125px;
+  margin-left: 25.9453125px;
   top: 108.8828125px;
   border-radius: 0px;
   margin-top: 10px;
 
   & > span {
+
     height: 15.87896728515625px;
     width: 60.00061798095703px;
-    left: 0px;
-    top: 0px;
+   
     background: #73d677;
     box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
     border-radius: 11px;
-    margin-top: 8px;
+    margin-top: 10px;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -153,8 +156,11 @@ export const Grass = styled.div`
     text-align: center;
     color: rgb(0, 0, 0);
     margin-right: 13px;
+    margin-left:4px;
+    margin-bottom:8px;
   }
   & > span {
+  
     height: 15.87896728515625px;
     width: 60.00061798095703px;
     left: 0px;
@@ -172,7 +178,7 @@ export const Grass = styled.div`
   }
 `;
 export const Image = styled.div`
-  background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/595.png");
+  background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png");
   height: 136.86154174804688px;
   width: 232.25103759765625px;
   left: 0px;

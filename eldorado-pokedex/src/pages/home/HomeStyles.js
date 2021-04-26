@@ -2,100 +2,120 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-  display: flex;
-  height: 1050px;
-  justify-content: center;
-  padding-top: 108px;
-
-`;
-export const WrapperHome = styled.div`
-  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
+ background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
  
-  & > img {
-    width: 58%;
-    top:0;
-  }
-  @media(max-width:320px){
-     height:1700px;
-    flex-direction:column;
-       img{
-         margin:0;
-         width:100%;
-         height:287px;
-         order:-1;
-       }
-       
-       
-  }
+ margin:0 auto;
+ display:flex;
+ height:100vh;
+ overflow-y: hidden;
+ box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
+ `;
+export const WrapperHome = styled.div`
 
-  @media(max-width:800px){
-   
-         flex-direction:column;
-         text-align:center;
-         img{
-           order:-1;
-           height:593px;
-           width:100%;
-         }
-        
-       }
-`;
+ 
+ margin: 0 auto;
+ margin-bottom: 200px;
+ display:flex;
+ align-items:center;
+ width:60%;
+ display:flex;
+ justify-content:space-between;
+
+ @media(max-width:1440px){
+   width:90%;
+
+ }
+
+@media(max-width:1024px){
+  h1{
+    font-size:70px;
+  }
+  @media(max-width:1084px){
+    width:100%;
+    flex-direction: column;
+    img{
+    
+      order:-1;
+     
+      
+    }
+
+  }
+  
+}
+
+
+` ;
 
 export const GroupHome = styled.section`
 
-  height: 557px;
+width:50%;
+  & > h1{
 
-  & > h1 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 72px;
-    line-height: 84px;
-    letter-spacing: 4px;
-    color: #000000;
-  }
-  & > h2 {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 32px;
-    line-height: 37px;
-    color: #000000;
+font-style: normal;
+font-weight: bold;
+font-size: 72px;
+line-height: 84px;
+letter-spacing: 4px;
+
+color: #000000;
+margin-bottom:64px;
+
   }
 
-  & > button {
-    height: 66px;
+  & > h2{
 
-    width: 40%;
-    top: 0px;
-    background: #73d676;
-    box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
-    border: 1px solid;
-    border-radius: 11px;
-    
+
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 37px;
+
+margin-bottom:64px;
   }
-  @media(max-width:320px){
-    height:100vh;
-    text-align: center;
-    h1{
-      font-size:42px;
-    }
-    h2{
-      font-size:24px;
-    }
-    button{
-      width:90%;
-      height:55.11px;
-      padding-bottom:10px;
-    }
+
+  & > button{
+background: #73D677;
+box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+border-radius: 11px;
+width: 40%;
+cursor: pointer;
+height:66px;
+
+
+ :hover{
+  background: #26b42b;
+  color: white;
+  color : #000000
+ }
+
   }
+
+  p{
+
+text-align: center;
+font-weight: bold;
+font-size: 23px;
+line-height: 27px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #212121;
+padding:10px;
+justify-content: center;
+  }
+
+
+@media(max-width:1024px){
+  h1{
+    font-size:70px;
+  }
+  button{
+    width:60%;
+  }
+
+}
   
-
 `;
 export const StyledLink = styled(Link)`
   font-size: 23px;

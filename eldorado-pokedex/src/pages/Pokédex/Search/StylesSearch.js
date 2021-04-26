@@ -9,7 +9,7 @@ export const InputSearch = styled.div`
  align-items:center;
 
  & > input{
- width:90%;
+ width:98%;
   height: 53px;
   display: flex;
   justify-content: center;
@@ -27,18 +27,31 @@ export const InputSearch = styled.div`
   color: rgba(33, 33, 33, 0.8);
   padding-top: 16px;
   padding-bottom:17px;
-  padding-left:31px 
+  padding-left:31px;
+  
+  :hover{
+      background: #cccccccc;
+      color:#fff;
+
+
+    }
   }
 
   & > button {
     height:30px;
-    background:#0AC5D4;
+    background: linear-gradient(180deg, #FFFFFF 30.32%, #F5F5F5 100%);
     width:10%;
     margin-top:30px;
     border: 1px solid rgba(242,242,242,1);
     border-radius:10px;
     font-size:18px;
     font-weight:bold;
+    cursor: pointer;
+    :hover{
+      background: #cccccccc;
+      color:#fff;
+
+    }
   }
 
  
