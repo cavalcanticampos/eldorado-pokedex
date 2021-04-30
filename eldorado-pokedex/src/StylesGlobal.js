@@ -8,9 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing:border-box;
     font-family: 'Karla', sans-serif;
-    overflow-y: hidden;
-  
+    overflow:auto;
   }
+  
+
   
 `;
  

@@ -1,29 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import {FaBars} from 'react-icons/fa'
 
-import Logo from "../../assets/Logo.png";
-import { Menu,MainHeader } from "./HeaderStyles";
+import Logo from '../../assets/Logo.png'
+
+import { Nav, NavContainer, NavLogo, MobileIcons, NavMenu,NavItem,NavLinks } from './HeaderStyles'
 
 function Header() {
+
+  const [open, setOpen] = useState(false);
+
+
+
+
   return (
-    <MainHeader>
-      <Menu>
-        <img src={Logo} alt="lets go" />
-        <ul>
-          <li>
-            <Link to="/">
-              <a href="##">Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link to="/Pokedex">
-              <a href="##">Pokedex</a>
-            </Link>
-          </li>
-        </ul>
-      </Menu>
-    </MainHeader>
-  );
+    <NavContainer>
+      <Nav>
+       <NavLogo src={Logo} alt="Logo-navbar"/>
+
+       <MobileIcons >
+         <FaBars onClick={() => setOpen(!open)}/>
+       </MobileIcons>
+        
+        <NavMenu>
+          <NavItem>
+            <NavLinks to="/">Home</NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="/Pokedex">Pokedex</NavLinks>
+          </NavItem>
+        </NavMenu>
+      
+      </Nav>
+    </NavContainer>
+  )
 }
 
-export default Header;
+export default Header

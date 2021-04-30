@@ -10,13 +10,15 @@ import Home from "./pages/home/Home";
 import Pokédex from "./pages/Pokédex/Pokédex";
 import { GlobalStyle } from "./StylesGlobal";
 
+
 function App() {
   return (
     <>
       <Router>
         <GlobalStyle />
-        <div>
+        <div className="App">
           <Header />
+        
           <Route path="/" exact component={Home} />
           <Route path="/Pokedex" component={Pokédex} />
         </div>
