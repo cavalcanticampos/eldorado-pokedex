@@ -16,9 +16,13 @@ function App() {
     <>
       <Router>
         <GlobalStyle />
-        <div className="App">
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: 'auto',
+          height: '100vh'
+        }}>
           <Header />
-        
           <Route path="/" exact component={Home} />
           <Route path="/Pokedex" component={Pokédex} />
         </div>
