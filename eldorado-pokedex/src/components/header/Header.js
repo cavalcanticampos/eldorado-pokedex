@@ -45,10 +45,10 @@ function Header() {
               <img style={{ width: "128px", height: "51px" }} src={Logo} alt="pokemon-logo" />
             </MobileItem>
             <MobileItem>
-              Home
+            <NavLinks className="active" to="/">Home</NavLinks>
             </MobileItem>
             <MobileItem>
-              Pokedex
+            <NavLinks to="/Pokedex">Pokedex</NavLinks>
             </MobileItem>
           </MobileContainer>
         </>
@@ -56,7 +56,7 @@ function Header() {
         
         <NavMenu>
           <NavItem>
-            <NavLinks to="/">Home</NavLinks>
+            <NavLinks className="active" to="/">Home</NavLinks>
           </NavItem>
           <NavItem>
             <NavLinks to="/Pokedex">Pokedex</NavLinks>

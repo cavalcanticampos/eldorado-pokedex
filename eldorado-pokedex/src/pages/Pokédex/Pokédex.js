@@ -3,7 +3,7 @@ import Cards from "./Cards/Cards";
 import Search from "./Search/Search";
 import { Container, Title } from "./Stylespokedex";
 import { getAllPokemon, getPokemon } from "../../service/api";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/Footer";
 
 function Pokédex() {
   const [pokemonData, setPokemonData] = useState([]);

@@ -5,10 +5,10 @@ import {
 } from "react-router-dom";
 
 import React from "react";
-import Header from "./components/header/Header";
+
 import Home from "./pages/home/Home";
 import Pokédex from "./pages/Pokédex/Pokédex";
-import { GlobalStyle } from "./StylesGlobal";
+import { ContainerGlobal, GlobalStyle } from "./StylesGlobal";
 
 
 function App() {
@@ -16,16 +16,10 @@ function App() {
     <>
       <Router>
         <GlobalStyle />
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: 'auto',
-          height: '100vh'
-        }}>
-          <Header />
+        <ContainerGlobal>
           <Route path="/" exact component={Home} />
           <Route path="/Pokedex" component={Pokédex} />
-        </div>
+        </ContainerGlobal>
       </Router>
     </>
   );

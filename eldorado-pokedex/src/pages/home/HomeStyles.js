@@ -1,83 +1,121 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-`;
-export const HeroImgFull = styled.img`
-  
-`
-export const WrapperHome = styled.div`
-  width: 80%;
-  margin: 0 auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
   & > footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 192px;
-    margin-bottom: 33px;
+    margin: 0;
+    margin-top: 61.95px;
+    margin-bottom: 20.05px;
+    justify-content: space-around;
   }
-
-  @media (min-width: 769px) {
-    /*   none img  */
-    ${HeroImgFull}{
+`
+export const HeroImgFull = styled.img`
+   margin-top:18px;
+  @media(min-width: 769px){
+    
       display: none;
-    }
+    
   }
-  & > ${HeroImgFull} {
-    margin-top: 18px;
+   
+  @media(max-width: 768px){
+   
+   margin-top:0
+  } 
+
+  @media(max-width: 425px){
+    margin-top: 54.96px
   }
 
-  @media (max-width: 768px) {
-    width: 95%;
-    text-align: center;
-    img {
-      width: 100%;
-    }
-    footer {
-      margin: 0;
-      margin-top: 61.95px;
-      margin-bottom: 20.05px;
-      justify-content: space-around;
-    }
-  }
-  @media (max-width:425px){
-    footer {
-      >h3{
-        font-size:16px;
-        }
-     
-    }
-  }
-`;
+
+  `
+
 export const HeroImg = styled.img`
+  position: absolute;
+  right: 0;
+  top: 17%;
 
-    position: absolute;
-    right: 0;
-    top: 17%;
+  @media(max-width:1427px){
+   
+  width: 50%;
+  top: 20%;
+ 
+ }
+  @media (max-width:768px){
+    display: none;
+  }
+  
+`
+
+export const Text = styled.p`
+  font-size: 72px;
+  line-height: 84px;
+  color: #000000;
+  margin-bottom:64px;
+  
+  @media(max-width:1427px){
+   
+    font-size: 45px ;
+    line-height: 55px; 
+    margin-bottom:30px;
+  
+
+  }
+  @media(max-width: 768px){
+     margin-bottom:6px;
+     font-size:45px;
+     line-height: 55px
+  }
+  @media(max-width: 425px){
+   margin-top:8px;
+   margin-bottom:5.48px;
+  }
+
+`
+
+export const Paragraph = styled.p`
+  font-size: 32px;
+  line-height: 37px;
+  color: #000000;
+  margin-bottom:64px;
+
+  @media(max-width:1427px){
+   
+   font-size: 29px ;
+   line-height: 35px;
+   margin-bottom:30px; 
+
+ }
+  @media(max-width: 768px){
+     font-size: 24px;
+     line-height:28px;
+  }
+
+  @media(max-width: 425px){
+    line-height: 28px;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 41.59px;
+  }
+
+
 
 
 `
-export const GroupHome = styled.div`
+export const Col = styled.div`
   margin-top: 127px;
-  width: 50%;
+  margin-left: 157px;
+  width: 40%;
+  display: flex;
   flex-direction: column;
 
-  p {
-    font-size: 70px;
-    line-height: 84px;
-    letter-spacing: 4px;
-  }
-  h2 {
-    margin-top: 64px;
-    font-weight: normal;
-    font-size: 32px;
-    line-height: 37px;
-  }
   button {
-    margin-top: 64px;
+   
+
     background: #73d677;
     box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
     border-radius: 11px;
@@ -90,55 +128,39 @@ export const GroupHome = styled.div`
       background: #19d521;
       color: #ffff;
     }
+
+    @media(max-width: 425px){
+      margin-bottom: 28px;
+    }
   }
-  
+
   /*  dispositivo tablete  */
+ 
+  @media(max-width:1427px){
+    
+   
+   margin-left:130px;
+ 
 
-  @media (max-width: 1327px){
-      >${HeroImg}{
-          width: 60%;
-      }
-  }
-  @media (max-width: 1063px){
-    width: 85%;
-      >${HeroImg}{
-         display:none;
-      }
-  }
+ }
+ @media(max-width:768px){
+  margin: 0;
+    width: 80%;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+ 
+
 
   
-  @media (max-width: 768px) {
-     width: 90%;
-    text-align: center;
-    margin: auto;
-    h2 {
-      margin: 0;
-      margin-top: 6px;
-    }
-    button {
-      margin: 0;
-      margin-top: 33px;
-    }
+
+  /*  dispositivo mobile  */
+
+  @media (max-width: 425px) {
+    
   }
-   
-    /*  dispositivo mobile  */
-
- @media (max-width:425px){
-    p{
-       font-size:42px;
-       margin: 0;
-       line-height: 53px;
-    }
-    h2{
-      font-size:24px;
-      line-height: 29px;
-    }
-    button{
-      width: 100%;
-    }
- }
-
-`;
+`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
@@ -147,5 +169,4 @@ export const StyledLink = styled(Link)`
   font-size: 23px;
   line-height: 27px;
   color: #212121;
-`;
-
+`

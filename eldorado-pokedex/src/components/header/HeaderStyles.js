@@ -7,24 +7,30 @@ export const NavContainer = styled.header`
   display: flex;
 `;
 export const NavLogo = styled.img`
-  @media (max-width: 425px){
-      width:35%;
+  @media (max-width: 425px) {
+    width: 35%;
   }
-  
 `;
 export const Nav = styled.nav`
-  // width: 100%;
-  // height: 93px;
-  // margin: 0 auto;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-
-
   display: flex;
   justify-content: space-between;
   width: -webkit-fill-available;
-  margin: 8px 32px;
+  margin: 8px 157px;
+
+  @media (max-width: 768px) {
+    margin: 8px 25px;
+  }
+
+  @media (max-width: 425px) {
+    margin: 10px 25px;
+  }
+`;
+export const MdClose = styled.div`
+  color: black;
+  z-index: 9;
+  width: 31px;
+  height: 31px;
+  cursor: pointer;
 `;
 export const MobileIcons = styled.div`
   display: none;
@@ -42,32 +48,36 @@ export const MobileIcons = styled.div`
 
 export const NavMenu = styled.ul`
   list-style: none;
-  
+
   display: flex;
   align-items: center;
-  justify-content:space-around;
-  width: 40%;
-  
-  
+  justify-content: space-around;
+  width: 50%;
 
-  @media (max-width: 500px) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;
 
-export const NavItem = styled.li`
-`;
+export const NavItem = styled.li``;
 export const NavLinks = styled(LinkR)`
   text-decoration: none;
   font-size: 25px;
- 
   color: #000000;
   cursor: pointer;
- 
+  padding-bottom: 10px;
+
+  &.active {
+    border-bottom: 3px solid #212121;
+  }
+
+  :hover {
+    border-bottom: 3px solid #212121;
+  }
 `;
 
 export const MobileContainer = styled.div`
-  background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
   box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
   border-radius: 0px 0px 16px 16px;
   width: inherit;
@@ -78,8 +88,8 @@ export const MobileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  aligm-items: center;
-`
+  align-items: center;
+`;
 
 export const MobileItem = styled.p`
   font-weight: normal;
@@ -89,4 +99,4 @@ export const MobileItem = styled.p`
   color: #000000;
   cursor: pointer;
   margin: 8px auto;
-`
+`;
