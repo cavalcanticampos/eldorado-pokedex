@@ -13,6 +13,9 @@ export const Container = styled.div`
     margin-bottom: 20.05px;
     justify-content: space-around;
   }
+  @media (max-width:425px){
+    height: auto;
+  }
 `
 export const HeroImgFull = styled.img`
    margin-top:18px;
@@ -28,7 +31,7 @@ export const HeroImgFull = styled.img`
   } 
 
   @media(max-width: 425px){
-    margin-top: 54.96px
+    margin-top: 7px
   }
 
 
@@ -56,6 +59,7 @@ export const Text = styled.p`
   line-height: 84px;
   color: #000000;
   margin-bottom:64px;
+ 
   
   @media(max-width:1427px){
    
@@ -82,6 +86,7 @@ export const Paragraph = styled.p`
   line-height: 37px;
   color: #000000;
   margin-bottom:64px;
+  font-weight:400;
 
   @media(max-width:1427px){
    

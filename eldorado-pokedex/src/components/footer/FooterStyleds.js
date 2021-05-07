@@ -9,7 +9,7 @@ padding-left: 156px;
     justify-content: space-between;
     padding-bottom: 15px;
     background:#f2b807;
-}
+
   
   & > h3 {
     font-size: 18px;
@@ -25,9 +25,26 @@ padding-left: 156px;
  }
  @media(max-width:768px){
    
-   padding: 38px;
+   padding:38px;
+
+   & > :first-child{
+      font-weight:400;
+   }
  
 
+ }
+ @media(max-width:425px){
+   padding:14px;
+   margin:0;
+   height:inherit;
+   & > h3{
+     font-size:16px;
+   }
+ }
+ @media (max-width:425px){
+
+     flex-direction:column-reverse
+ 
  }
 
 
