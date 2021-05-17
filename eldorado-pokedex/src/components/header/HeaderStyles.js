@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+import { colors } from "../../colorstyles";
+import {breakpoints} from "../../breakstyles";
 
 export const NavContainer = styled.header`
-  background: #f5db13;
+  background:${colors.Yellow};
   box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
   display: flex;
 `;
@@ -17,11 +19,11 @@ export const Nav = styled.nav`
   width: -webkit-fill-available;
   margin: 8px 157px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     margin: 8px 25px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width:${breakpoints.mobile}) {
     margin: 10px 25px;
   }
 `;
@@ -35,7 +37,7 @@ export const MdClose = styled.div`
 export const MobileIcons = styled.div`
   display: none;
   cursor: pointer;
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
     display: block;
     position: absolute;
     top: 0;
@@ -54,7 +56,7 @@ export const NavMenu = styled.ul`
   justify-content: space-around;
   width: 50%;
 
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
     display: none;
   }
 `;
@@ -63,21 +65,21 @@ export const NavItem = styled.li``;
 export const NavLinks = styled(LinkR)`
   text-decoration: none;
   font-size: 25px;
-  color: #000000;
+  color: ${colors.Gold};
   cursor: pointer;
   padding-bottom: 10px;
 
   &.active {
-    border-bottom: 3px solid #212121;
+    border-bottom: 3px solid ${colors.goldBlack};
   }
 
   :hover {
-    border-bottom: 3px solid #212121;
+    border-bottom: 3px solid ${colors.goldBlack};
   }
 `;
 
 export const MobileContainer = styled.div`
-  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  background: ${colors.YellowGradient};
   box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
   border-radius: 0px 0px 16px 16px;
   width: inherit;
@@ -96,7 +98,7 @@ export const MobileItem = styled.p`
   font-size: 27px;
   line-height: 32px;
   text-align: center;
-  color: #000000;
+  color: ${colors.Gold};
   cursor: pointer;
   margin: 8px auto;
 `;

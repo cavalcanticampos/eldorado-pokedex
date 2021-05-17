@@ -11,8 +11,10 @@ import {
   Image,
 } from "./StylesCard";
 import { Container, Item } from "../Pagination/StylesPagination";
+import { usePoke } from "../../../Context/Provider";
 
-export default function Cards({pokemonData ,nextPagePokemon,previousPagePokemon,active}) {
+export default function Cards({ nextPagePokemon,previousPagePokemon}) {
+  const {pokemonData,active} = usePoke()
 
   return (
     <>

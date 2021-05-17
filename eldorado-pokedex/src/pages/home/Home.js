@@ -3,6 +3,7 @@ import Banner from '../../assets/Banner.png'
 import BannerComplete from '../../assets/BannerComplete.svg'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
+
 import {
   Container,
   StyledLink,
@@ -15,15 +16,16 @@ import {
 
 function Home() {
   return (
-    <>
+    
+    
       <Container>
-        <Header />
-        <HeroImgFull src={BannerComplete} />
-        <HeroImg src={Banner} />
+      
+        <Header/>
+        <HeroImgFull src={BannerComplete}  />
         <Col>
           <Text>
-            <strong>Encontre</strong> todos os seus favoritos{' '}
-            <strong>Pokémon</strong>
+            <strong>Encontre</strong> todos seus Pokémons{' '}
+            <strong>favoritos</strong>
           </Text>
           <Paragraph>
             Você pode saber o tipo de Pokémon, seus pontos fortes, desvantagens
@@ -34,10 +36,13 @@ function Home() {
               <span>ver pokemons</span>
             </StyledLink>
           </button>
+         
         </Col>
+        
+        <HeroImg src={Banner} />
+        
+        <Footer/>
       </Container>
-      <Footer />
-    </>
   )
 }
 

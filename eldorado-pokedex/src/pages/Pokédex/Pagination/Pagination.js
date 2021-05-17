@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { usePoke } from '../../../Context/Provider'
 import { Container, Item } from './StylesPagination'
 
 function Pagination() {
-    const [active, setActive] = useState(1)
+    const {active} = usePoke()
 
     return (
         <Container>

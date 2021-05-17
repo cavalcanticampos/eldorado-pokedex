@@ -4,28 +4,27 @@ import Search from "./Search/Search";
 import { Container, Title } from "./Stylespokedex";
 import { getAllPokemon, getPokemon } from "../../service/api";
 import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import { usePoke } from "../../Context/Provider";
 
 function Pokédex() {
-  const [pokemonData, setPokemonData] = useState([]);
-  
+  const {
+    pokemonData,
+    setPokemonData,
+    search,
+    active,
+    setActive,
+    currentOffset,
+    setCurrentOffset,
+  } = usePoke();
 
-  const [active, setActive] = useState(1);
-  const [currentOffset, setCurrentOffset] = useState(0);
-  const [search, setSearch] = useState("");
   const offset = 9;
   const initialURL = `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
     currentOffset * offset
   }`;
-
-
- console.log(pokemonData)
-  const handleInputSearch = (name) => {
-    setSearch(name);
-  };
+  console.log(pokemonData);
 
   const Searchpokemon = async (name) => {
-
-    
     var regex = `${search}`;
     var isSuggestedPokemon = new RegExp(regex, "g");
 
@@ -40,12 +39,7 @@ function Pokédex() {
     });
     await loadPokemon(suggestedPokemons);
 
-    if(!search===''){
-      return <h1>erro</h1>
-    }
-
     console.log("suggestedPokemons ", suggestedPokemons);
-  
   };
 
   useEffect(() => {
@@ -64,7 +58,6 @@ function Pokédex() {
       })
     );
     setPokemonData(_pokemonData);
-   
   };
 
   const nextPagePokemon = async () => {
@@ -94,21 +87,17 @@ function Pokédex() {
   return (
     <>
       <Container>
+        <Header />
         <Title>
           <h3>Pokemons para você escolher o seu favorito</h3>
         </Title>
-        <Search
-          handleInputSearch={handleInputSearch}
-          Searchpokemon={Searchpokemon}
-        />
+        <Search Searchpokemon={Searchpokemon} />
         <Cards
-          pokemonData={pokemonData}
           previousPagePokemon={previousPagePokemon}
           nextPagePokemon={nextPagePokemon}
-          active={active}
         />
       </Container>
-      <Footer/>
+      <Footer />
     </>
   );
 }

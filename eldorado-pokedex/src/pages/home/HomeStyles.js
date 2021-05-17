@@ -1,143 +1,149 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import {} from "../../colorstyles";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import {colors }  from '../../colorstyles'
+import {breakpoints}  from '../../breakstyles'
 
 export const Container = styled.div`
-  background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
-
   display: flex;
   flex-direction: column;
+  background: ${colors.YellowGradient};
   height: 100vh;
-
-  & > footer {
-    margin: 0;
-    margin-top: 61.95px;
-    margin-bottom: 20.05px;
-    justify-content: space-around;
-  }
-  @media (max-width: 425px) {
+  
+  
+  
+  @media (max-width: ${breakpoints.tablet}) {
     height: auto;
   }
-`;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: auto;
+  }
+`
 export const HeroImgFull = styled.img`
   margin-top: 18px;
-  @media (min-width: 769px) {
+  @media (min-width: ${breakpoints.tablet}) {
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width:${breakpoints.tablet}) {
     margin-top: 0;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
     margin-top: 7px;
   }
-`;
+`
 
 export const HeroImg = styled.img`
   position: absolute;
   right: 0;
-  top: 17%;
-
-  @media (max-width: 1427px) {
+  top: 154px;
+  
+  @media (max-width: 1383px) {
     width: 50%;
     top: 20%;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
-`;
+`
 
 export const Text = styled.p`
   font-size: 72px;
   line-height: 84px;
-  color: #000000;
+  letter-spacing: 4px;
+  color: ${colors.GoldGradient};
   margin-bottom: 64px;
 
-  @media (max-width: 1427px) {
-    font-size: 45px;
-    line-height: 55px;
+  @media (max-width: 1445px) {
+    font-size: 50px;
+    line-height: 60px;
+    letter-spacing: 3px;
+    color:  ${colors.GoldGradient};
     margin-bottom: 30px;
   }
-  @media (max-width: 768px) {
-    margin-bottom: 6px;
-    font-size: 45px;
-    line-height: 55px;
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 25px;
+    font-size: 49px;
+    line-height: 45px;
   }
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
     margin-top: 8px;
     margin-bottom: 5.48px;
   }
-`;
+
+
+`
 
 export const Paragraph = styled.p`
+  letter-spacing: 2px;
   font-size: 32px;
   line-height: 37px;
-  color: #000000;
+  color:  ${colors.GoldGradient};
   margin-bottom: 64px;
   font-weight: 400;
 
-  @media (max-width: 1427px) {
-    font-size: 29px;
-    line-height: 35px;
+  @media (max-width: 1445px) {
+    letter-spacing: 2px;
+    font-size: 32px;
+    line-height: 34px;
     margin-bottom: 30px;
+    
   }
-  @media (max-width: 768px) {
-    font-size: 24px;
-    line-height: 28px;
+  @media (max-width:${breakpoints.tablet}) {
+    font-size: 23px;
+    line-height: 29px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
     line-height: 28px;
     font-size: 24px;
     text-align: center;
     margin-bottom: 41.59px;
   }
-`;
+  @media (max-width: 1220px) {
+  }
+`
 export const Col = styled.div`
-  margin-top: 127px;
-  margin-left: 157px;
-  width: 40%;
+  padding-top: 127px;
+  padding-left: 157px;
+  width: 50%;
+  display: flex;
   display: flex;
   flex-direction: column;
+  
 
   button {
-    background: #73d677;
+    background:${colors.Green};
     box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
     border-radius: 11px;
     height: 66px;
     width: 231px;
     font-size: 23px;
-    border: 1px solid #73d677;
+    border: 1px solid ${colors.Green};
     cursor: pointer;
     :hover {
-      background: #19d521;
-      color: #ffff;
+      background: ${colors.GreenBlack};
+      color: ${colors.white};
     }
 
-    @media (max-width: 425px) {
-      margin-bottom: 28px;
-    }
+   
   }
 
-  /*  dispositivo tablete  */
-
-  @media (max-width: 1427px) {
-    margin-left: 130px;
-  }
-  @media (max-width: 768px) {
-    margin: 0;
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 0;
     width: 80%;
     align-items: center;
     text-align: center;
     margin: 0 auto;
+    padding-bottom:61.95px
   }
 
   /*  dispositivo mobile  */
 
-  @media (max-width: 425px) {
+  @media (max-width: ${breakpoints.mobile}) {
   }
-`;
+`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
@@ -145,5 +151,5 @@ export const StyledLink = styled(Link)`
   font-weight: bold;
   font-size: 23px;
   line-height: 27px;
-  color: #212121;
-`;
+  color: ${colors.goldBlack}
+`
