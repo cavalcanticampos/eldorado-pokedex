@@ -159,13 +159,14 @@ export const CardTag = styled.div`
  
 
   & > span{
-  background: #73d677;
+  background: ${(props) => props.pokeTypeColor ? props.pokeTypeColor : '#73d677'};
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
   border-radius: 11px;
   font-size: 12px;
   line-height: 14px;
   text-align: center;
-  color: #212121;
+  color: ${(props) => props.josaph ? props.josaph : '#212121'};
+  // color: #212121;
   width: 60px;
   padding: 3px;
 
@@ -185,15 +186,14 @@ export const CardTag = styled.div`
 
 export const CardImg = styled.div`
 
-
- & > :nth-child(1){
-  height: 136px;
- }
+  & > :nth-child(1){
+    height: 136px;
+  }
 
   width: 70%;
   text-align:center;
-  background: #9fdaff;
+  // background: #9fdaff;
+  background: ${(props) => props.backgroundColor};
   border-radius: 0px 8px 8px 0px;
-  
 
 `

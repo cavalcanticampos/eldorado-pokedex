@@ -23,7 +23,7 @@ function Pokédex() {
   const initialURL = `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
     currentOffset * offset
   }`
-  console.log(pokemonData)
+  // console.log(pokemonData)
 
   const Searchpokemon = async (name) => {
  
