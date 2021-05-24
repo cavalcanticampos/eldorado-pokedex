@@ -1,55 +1,55 @@
-import React from "react";
+import React from 'react'
 
 import {
   ContainerCard,
-  Wrapper,
-  Column,
-  Skill,
-  Attack,
-  Defese,
-  Grass,
-  Image,
-} from "./StylesCard";
-import { Container, Item } from "../Pagination/StylesPagination";
-import { usePoke } from "../../../Context/Provider";
+  WrapperCards,
+  CardSkill,
+  CardsTitle,
+  CardsPropContainer,
+  CardSkillItems,
+  CardTag,
+  CardImg
+} from './StylesCard'
+import { Container, Item } from '../Pagination/StylesPagination'
+import { usePoke } from '../../../Context/Provider'
+export default function Cards({ nextPagePokemon, previousPagePokemon }) {
+  const { pokemonData, active } = usePoke()
 
-export default function Cards({ nextPagePokemon,previousPagePokemon}) {
-  const {pokemonData,active} = usePoke()
-
+  
   return (
     <>
-      <ContainerCard>
-        {pokemonData.map((pokemons) => (
-          <Wrapper>
-            <Column>
-              <h3>{pokemons.name}</h3>
-              <Skill>
-                <Attack>
-                  <span>409</span>
-                  <p>Ataque</p>
-                </Attack>
+      <ContainerCard >
+        {pokemonData.map((pokemon) => (
+          <WrapperCards key={pokemon.id}> 
+            <CardSkill>
+              <CardsTitle>{pokemon.name}</CardsTitle>
+              <CardsPropContainer>
+                <span className="firt-child">48</span>
+                <span>49</span>
+              </CardsPropContainer>
 
-                <Defese>
-                  <span>49</span>
-                  <p>defesa</p>
-                </Defese>
-              </Skill>
-              <Grass>
-                <span>grass</span>
-                <span>poison</span>
-              </Grass>
-            </Column>
+              <CardSkillItems>
+                <span>Attack</span>
+                <span>Defense</span>
+              </CardSkillItems>
 
-            <Image>
-              <img src={pokemons.sprites.front_default} alt={pokemons.name} />
-            </Image>
-          </Wrapper>
+              <CardTag>
+                <span>{pokemon.types[0].type.name}</span>
+              </CardTag>
+            </CardSkill>
+
+            <CardImg>
+              
+            <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name}/>
+              
+            </CardImg>
+          </WrapperCards>
         ))}
       </ContainerCard>
 
       <Container>
         {active - 1 === 0 ? (
-          ""
+          ''
         ) : (
           <Item onClick={previousPagePokemon}>{active - 1}</Item>
         )}
@@ -57,5 +57,5 @@ export default function Cards({ nextPagePokemon,previousPagePokemon}) {
         <Item onClick={nextPagePokemon}>{active + 1}</Item>
       </Container>
     </>
-  );
+  )
 }

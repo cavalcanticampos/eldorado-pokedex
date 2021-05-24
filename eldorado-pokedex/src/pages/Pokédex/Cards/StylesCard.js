@@ -2,196 +2,198 @@ import styled from "styled-components";
 
 export const ContainerCard = styled.div`
 
-
-/*  height: 500.69px;     */
  
+  margin-left: 158px;
+  margin-right: 157px;
+  margin-top: 24px;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 109.85px;
+  flex-wrap:wrap;
   justify-content: space-between;
-  margin: auto;
- 
+  @media(max-width:998px){
+    margin-left: 22px;
+  margin-right: 22px;;
+  }
+  @media(max-width:720px){
+     
+  margin-left: 20px;
+  margin-right: 19.34px;
+  }
+
 `;
 
-export const Wrapper = styled.div`
-  height: 136.86px;
-  width: 31.3%;
-  background: #f6f7f9;
-  border-radius: 8px;
-  display: flex;
-  align-content: center;
-  box-shadow: 4px 4px 4px 0px #212121 10%;
+export const WrapperCards = styled.div`
+  width: 30%;
   margin: 1%;
-  &:nth-child(3n) {
-    margin-right: 0;
+  height: 136.86px;
+  border-radius: 16px;
+  box-shadow: 4px 4px 4px 0px #212121 10%;
+  display: flex;
+  @media (max-width:998px){
+     width:48%;
   }
+  @media(max-width:720px){
+      
+      width: 100%;
+      
+     }
 
-  &:nth-child(3n + 1) {
-    margin-left: 0;
-  }
 `;
 
-export const Column = styled.div`
-width:60%;
-
- overflow-x: hidden;
+export const CardSkill = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background: #F6F7F9;
+  width: 35%;
+  padding-left:25.95px;
 
-  & > h3 {
-    height: 27.977222442626953px;
-    width: 149.1907196044922px;
-    left: 0px;
-    top: 0px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    color: #212121;
-    text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
-    margin-left:  70px;
-    margin-top: 10px;
-  }
-   
-`;
-
-export const Skill = styled.div`
-  display: flex;
-  height: 51.53152847290039px;
-  width: 88.87910461425781px;
-  left: 25.9453125px;
-  top: 45.3671875px;
-  border-radius: 0px;
-`;
-
-export const Attack = styled.div`
-  display: flex;
-  flex-direction: column;
-  & > span {
-    height: 36.04155349731445px;
-    width: 37.9530029296875px;
-    border-radius: 80px;
-    border: 3px solid #212121;
-    box-sizing: border-box;
-    padding: 4px;
-    margin-left: 6px;
-    margin-right: 6px;
-    font-size: 14px;
-    text-align: center;
-    line-height: 18px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-  }
-
-  & > p {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 14px;
-    letter-spacing: 0em;
-    font-style: normal;
-    color: #4b4b4b;
-    padding-top: 5px;
-  }
-`;
-
-export const Defese = styled.div`
-  display: flex;
-  flex-direction: column;
-  & > span {
-    height: 36px;
-    width: 37.9px;
-    border-radius: 80px;
-    border: 3px solid #212121;
-    box-sizing: border-box;
-    padding: 4px;
-    margin-left: 6px;
-    margin-right: 6px;
-    font-size: 14px;
-    text-align: center;
-    line-height: 18px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-  }
-
-  & > p {
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 14px;
-    letter-spacing: 0em;
-    font-style: normal;
-    color: #4b4b4b;
-    padding-top: 5px;
-  }
-`;
-
-export const Grass = styled.div`
-width:80%;
-  display: flex;
-  align-items: center;
-  height: 15.87896728515625px;
-  width: 132.97434997558594px;
-  margin-left: 25.9453125px;
-  top: 108.8828125px;
-  border-radius: 0px;
-  margin-top: 10px;
-
-  & > span {
-
-    height: 15.87896728515625px;
-    width: 60.00061798095703px;
-   
-    background: #73d677;
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 11px;
-    margin-top: 10px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    margin-right: 13px;
-    margin-left:4px;
-    margin-bottom:8px;
-  }
-  & > span {
   
-    height: 15.87896728515625px;
-    width: 60.00061798095703px;
-    left: 0px;
-    top: 0px;
-    background: #07d6f2;
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 11px;
-    margin-top: 8px;
-    font-style: normal;
-    font-weight: normal;
+  @media(max-width:1383px){
+     padding-left: 2px;
+  }
+  @media (max-width:998px){
+     padding-left: 25.95px;
+  }
+
+  @media (max-width:368px){
+     padding-left: 6.95px;
+  }
+  
+  
+
+
+
+
+  
+`;
+export const CardsTitle = styled.h3`
+  font-size: 18px;
+  line-height: 21px;
+  color: #212121;
+  text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+
+
+  @media(max-width:1585px){
+    font-size:13px;
+  }
+  
+  
+`;
+export const CardsPropContainer = styled.div`
+  display: flex;
+  
+  padding-top:12.1px;
+
+ & > :nth-child(1){
+       margin-right: 12.97px;
+              
+    @media(max-width:1383px){
+     margin-right: 2.97px;
+    }
+    @media(max-width:998px){
+      margin-right:12.97px;
+    }
+       
+    }
+
+
+ & > :nth-child(2){
+       margin-right: 2.74px;
+
+ }
+
+
+
+
+
+  & > span {
+    height: 18px;
+    width: 23px;
+    height: 36.5px;
+    width: 37.9px;
+    margin-bottom:5.94px;
+    border: 3px solid #212121;
+    box-sizing: border-box;
+    border-radius: 95px;
+    padding: 6px;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #212121;
+  }
+`;
+export const CardSkillItems = styled.div`
+ 
+  margin-bottom: 10.95px;
+  & > span {
     font-size: 12px;
     line-height: 14px;
     text-align: center;
-    color: rgb(0, 0, 0);
-  }
-`;
-export const Image = styled.div`
-  background-image: url("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png");
-  height: 136.86154174804688px;
-  width: 232.25103759765625px;
-  left: 0px;
-  top: 0px;
-  border-radius: 0px 8px 8px 0px;
-  display: flex;
-  align-items: center;
+    color: #4b4b4b;
+    padding-bottom: 3px;
+    
 
-  & > img {
-    height: 156.52120971679688px;
-    width: 167.8395538330078px;
-    left: 0.8125px;
-    top: -9.828125px;
-    border-radius: 0px;
+    @media(max-width:1585px){
+    font-size:9px;
   }
+  @media(max-width:998px){
+    font-size:12px;
+  }
+     
+     
+  }
+    &  > :nth-child(1){
+       margin-right: 7.57px;
+    }
+
+
+  
+
 `;
+
+export const CardTag = styled.div`
+
+ display:flex;
+ 
+ 
+
+  & > span{
+  background: #73d677;
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: #212121;
+  width: 60px;
+  padding: 3px;
+
+  }
+
+  &>:nth-child(2){
+  background: #07d6f2;
+     
+  }
+
+  &>  :nth-child(1){
+      margin-right: 12.97px;
+  }
+
+`;
+
+
+export const CardImg = styled.div`
+
+
+ & > :nth-child(1){
+  height: 136px;
+ }
+
+  width: 70%;
+  text-align:center;
+  background: #9fdaff;
+  border-radius: 0px 8px 8px 0px;
+  
+
+`

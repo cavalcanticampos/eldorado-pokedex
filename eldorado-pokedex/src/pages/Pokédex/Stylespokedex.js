@@ -2,8 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    height: 100vh;
-   width: 60%;
-  margin: 0 auto; 
+   @media(max-width:998px){
+     height: auto;
+        & > footer{
+          position: static;
+          padding-right: 22px;
+          padding-left: 22px;
+        }
+   }
+  
+  
 `;
 
 export const Title = styled.div`
@@ -21,4 +29,9 @@ export const Title = styled.div`
 
     color: #000000;
   }
+  @media(max-width:720px){
+     margin-top: 29px;
+     margin-left: 33px;
+     margin-right: 26px;
+     }
 `;

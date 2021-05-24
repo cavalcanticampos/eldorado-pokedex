@@ -8,6 +8,7 @@ export default function PokeProvider({ children }) {
   const [search, setSearch] = useState("");
   const [active, setActive] = useState(1);
   const [currentOffset, setCurrentOffset] = useState(0);
+  const [initial ,setInitial] = useState([])
 
   return (
     <PokemonContext.Provider
@@ -20,6 +21,8 @@ export default function PokeProvider({ children }) {
         setActive,
         currentOffset,
         setCurrentOffset,
+        initial,
+        setInitial
       }}
     >
       {children}
@@ -38,6 +41,8 @@ export function usePoke() {
     active,
     currentOffset,
     setCurrentOffset,
+    initial,
+    setInitial
   } = context;
   return {
     pokemonData,
@@ -48,5 +53,6 @@ export function usePoke() {
     setActive,
     currentOffset,
     setCurrentOffset,
+    initial,setInitial
   };
 }

@@ -17,8 +17,15 @@ export const FooterMain = styled.footer`
     font-size: 18px;
     line-height: 21px;
     color: ${colors.goldBlack}
-  }
 
+    }
+
+    span{
+      padding: 5px;
+    }    
+
+  
+  
   @media (max-width: ${breakpoints.tablet}) {
     position: static;
     height: auto;

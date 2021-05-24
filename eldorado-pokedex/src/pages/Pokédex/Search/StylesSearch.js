@@ -3,13 +3,28 @@ import styled from "styled-components";
 
 
 export const InputSearch = styled.div`
+
+
+margin-left: 177px;
+margin-right: 175px;
+
  
  display:flex;
  flex-direction:column;
  align-items:center;
+ @media(max-width:998px){
+   margin-left: 36.95px;
+   margin-right: 36.95px;
+ }
+
+ @media(max-width:720px){
+     
+     margin-left: 27px;
+     margin-right: 26px;
+     }
 
  & > input{
- width:98%;
+  width: 100%;
   height: 53px;
   display: flex;
   justify-content: center;
@@ -30,8 +45,9 @@ export const InputSearch = styled.div`
   padding-left:31px;
   
   :hover{
-      background: #cccccccc;
-      color:#fff;
+      background:#e6e4e4cc;
+      color:#000;
+    
 
 
     }
@@ -52,6 +68,16 @@ export const InputSearch = styled.div`
       color:#fff;
 
     }
+
+
+    @media(max-width:980px){
+      width:20%;
+     font-size: 15px;
+     }
+     @media(max-width:500px){
+      width:20%;
+     font-size: 13px;
+     }
   }
 
  
