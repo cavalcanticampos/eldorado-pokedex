@@ -21,7 +21,7 @@ export const Item = styled.div`
 
     :hover {
     color:white;
-    background: ${colors.greenBlack};
+    background: ${colors.posion};
     }
 
     ${(props) =>
