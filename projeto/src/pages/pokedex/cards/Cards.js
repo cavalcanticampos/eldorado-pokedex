@@ -119,10 +119,10 @@ export default function Cards({ nextPagePokemon, previousPagePokemon }) {
         {active - 1 === 0 ? (
           ''
         ) : (
-          <Item onClick={previousPagePokemon}>{active - 1}</Item>
+          <Item   onClick={previousPagePokemon}>{active - 1}</Item>
         )}
-        <Item>{active}</Item>
-        <Item onClick={nextPagePokemon}>{active + 1}</Item>
+        <Item isSelected = {active}>{active}</Item>
+        <Item  onClick={nextPagePokemon}>{active + 1}</Item>
       </Container>
     </>
   )

@@ -14,7 +14,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-  margin-top: 72px;
+  margin-top: 44px;
   display: flex;
   align-items: center;
   justify-content: center;

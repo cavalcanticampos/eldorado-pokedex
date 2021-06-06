@@ -14,14 +14,22 @@ export const Item = styled.div`
   padding: 8px;
   border: solid 1px ${colors.bluegosth};
 
-  border-radius: 5px;
+  border-radius: 8px;
+ 
   margin: 4px;
   cursor: pointer;
 
     :hover {
     color:white;
-    background: ${colors.bluegosth};
+    background: ${colors.greenBlack};
     }
+
+    ${(props) =>
+    props.isSelected && {
+      background: "#2b2eff",
+      color:"#ffff",
+    
+    }}
 
   
 `
