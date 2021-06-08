@@ -1,5 +1,6 @@
 {
   "name": "eldorado-pokedex",
+  "homepage": "https://cavalcanticampos.github.io/eldorado-pokedex/frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
