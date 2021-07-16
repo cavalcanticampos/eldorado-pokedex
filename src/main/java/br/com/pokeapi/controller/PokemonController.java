@@ -29,14 +29,6 @@ public class PokemonController {
         return  pokeList;
     }
 
-    @PostMapping("/creating")
-    public List<Pokemon>  creating(@RequestBody Pokemon poke){
-        pokeList.add(poke);
-        return pokeList;
-    }
-
-
-
     @GetMapping("/list/{id}") public Pokemon findAllById(@PathVariable("id") Integer id){
 
         Optional<Pokemon>  pokeFind = pokeList.stream().filter(pokeID -> pokeID.getId() == id).findFirst();
