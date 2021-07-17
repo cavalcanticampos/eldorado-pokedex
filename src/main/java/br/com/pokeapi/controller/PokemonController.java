@@ -7,14 +7,18 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/pokemons")
+@RequestMapping("/")
 public class PokemonController {
 
     List<Pokemon>  pokeList = new ArrayList<>();
     Pokemon poke  = new Pokemon();
 
-    @GetMapping("/list")
-    public List<Pokemon> findAllPoke() {
+    int page;
+    int limit;
+
+    @GetMapping("/pokemons")
+
+    public List<Pokemon> findAllPoke(int page , int limit){
 
         pokeList.add( new  Pokemon(1,"Bulbassaur", "#70A83B",49,49,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"));
         pokeList.add( new  Pokemon(2,"ivysaur","#70A83B",62,63,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"));
@@ -29,7 +33,7 @@ public class PokemonController {
         return  pokeList;
     }
 
-    @GetMapping("/list/{id}") public Pokemon findAllById(@PathVariable("id") Integer id){
+    @GetMapping("/pokemons/{id}") public Pokemon findAllById(@PathVariable("id") Integer id){
 
         Optional<Pokemon>  pokeFind = pokeList.stream().filter(pokeID -> pokeID.getId() == id).findFirst();
         if (pokeFind.isPresent()) {
