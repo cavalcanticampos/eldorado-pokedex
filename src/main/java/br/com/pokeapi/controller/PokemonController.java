@@ -13,12 +13,11 @@ public class PokemonController {
     List<Pokemon>  pokeList = new ArrayList<>();
     Pokemon poke  = new Pokemon();
 
-    int page;
-    int limit;
+
 
     @GetMapping("/pokemons")
 
-    public List<Pokemon> findAllPoke(int page , int limit){
+    public List<Pokemon> findAllPoke(){
 
         pokeList.add( new  Pokemon(1,"Bulbassaur", "#70A83B",49,49,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"));
         pokeList.add( new  Pokemon(2,"ivysaur","#70A83B",62,63,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"));
