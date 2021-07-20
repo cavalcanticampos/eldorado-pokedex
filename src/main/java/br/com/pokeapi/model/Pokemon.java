@@ -1,6 +1,5 @@
 package br.com.pokeapi.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +16,5 @@ public class Pokemon {
      private int defense;
      private String type;
      private String url;
+
 }

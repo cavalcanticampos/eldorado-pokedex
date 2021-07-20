@@ -2,6 +2,7 @@ package br.com.pokeapi.controller;
 import br.com.pokeapi.model.Pokemon;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,14 +11,16 @@ import java.util.Optional;
 @RequestMapping("/")
 public class PokemonController {
 
+
     List<Pokemon>  pokeList = new ArrayList<>();
+
     Pokemon poke  = new Pokemon();
 
 
-
     @GetMapping("/pokemons")
+    public  List<Pokemon>  findAllPoke( int page){
 
-    public List<Pokemon> findAllPoke(){
+
 
         pokeList.add( new  Pokemon(1,"Bulbassaur", "#70A83B",49,49,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"));
         pokeList.add( new  Pokemon(2,"ivysaur","#70A83B",62,63,"grass","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"));
@@ -28,16 +31,32 @@ public class PokemonController {
         pokeList.add( new  Pokemon(7,"squirtle","A2CFF0",48,65,"water","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/7.svg"));
         pokeList.add( new  Pokemon(8,"wartortle","A2CFF0",63,80,"water","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/8.svg"));
         pokeList.add( new  Pokemon(9,"blastoise","A2CFF0",83,100,"water","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg"));
+        pokeList.add( new  Pokemon(10,"pikachu","A2CFF0",83,100,"water","https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg"));
 
-        return  pokeList;
+
+        int pageSize=2;
+        int offeset = (page-1) * pageSize;
+        if(pokeList == null || pokeList.size() <= offeset){
+            return Collections.emptyList();
+        }
+        // toIndex exclusive
+        return pokeList.subList(offeset, Math.min(offeset + pageSize,  pokeList.size()));
+
+
     }
+
 
     @GetMapping("/pokemons/{id}") public Pokemon findAllById(@PathVariable("id") Integer id){
 
         Optional<Pokemon>  pokeFind = pokeList.stream().filter(pokeID -> pokeID.getId() == id).findFirst();
         if (pokeFind.isPresent()) {
             return pokeFind.get();
+
         }
         return null;
     }
+
+
+
+
 }
