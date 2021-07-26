@@ -7,11 +7,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 
+@RequestMapping("/pokemons")
 @RestController
 public class PokemonController {
 
 
-    @GetMapping("/pokemons")
+    @GetMapping
     public List<Pokedex> findAllPoke(int page) {
 
         RestTemplate res = new RestTemplate();
