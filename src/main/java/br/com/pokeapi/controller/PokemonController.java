@@ -8,6 +8,7 @@ import java.util.*;
 
 
 @RestController
+@ResponseBody
 @RequestMapping("/")
 public class PokemonController {
     
