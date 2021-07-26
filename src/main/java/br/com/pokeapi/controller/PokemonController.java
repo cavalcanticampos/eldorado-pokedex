@@ -9,11 +9,12 @@ import java.util.*;
 
 
 @RestController
+@RequestMapping("/pokemons")
 
 public class PokemonController {
 
 
-    @RequestMapping("pokemons")
+    @GetMapping
     public List<Pokedex> findAllPoke(  int page) {
 
         RestTemplate res = new RestTemplate();
