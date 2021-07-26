@@ -13,18 +13,19 @@ import java.util.*;
 public class PokemonController {
 
 
-    @GetMapping("/pokemons")
-    public List<Pokedex> findAllPoke(int page) {
+    @RequestMapping("pokemons")
+    public List<Pokedex> findAllPoke(  int page) {
 
         RestTemplate res = new RestTemplate();
 
         PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=18&offset=0", PokedexList.class);
 
+        assert response != null;
         List<Pokedex> results = response.getResults();
 
         int pageSize = 9;
 
-        if (pageSize <= 0 || page <= 0) {
+        if (page <= 0) {
             throw new IllegalArgumentException("invalid page size: " + pageSize);
         }
 
