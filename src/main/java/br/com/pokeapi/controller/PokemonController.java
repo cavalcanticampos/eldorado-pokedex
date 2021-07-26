@@ -18,7 +18,7 @@ public class PokemonController {
 
         RestTemplate res = new RestTemplate();
 
-        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0", PokedexList.class);
+        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=18&offset=0", PokedexList.class);
 
         List<Pokedex> results = response.getResults();
 
