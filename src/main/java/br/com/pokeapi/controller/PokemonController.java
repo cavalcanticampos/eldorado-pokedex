@@ -1,5 +1,4 @@
 package br.com.pokeapi.controller;
-
 import br.com.pokeapi.model.Pokedex;
 import br.com.pokeapi.model.PokedexList;
 import org.springframework.web.bind.annotation.*;
@@ -11,21 +10,15 @@ import java.util.*;
 @RestController
 @RequestMapping("/")
 public class PokemonController {
-    List<Pokedex> results = new ArrayList<>();
-
+    
     @GetMapping("/pokemons")
-
     public List<Pokedex> findAllPoke(int page) {
 
         RestTemplate res = new RestTemplate();
 
-        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0", PokedexList.class);
+        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", PokedexList.class);
 
         List<Pokedex> results = response.getResults();
-
-
-
-
 
         int pageSize = 9;
 

@@ -14,5 +14,4 @@ public class PokedexList {
 
       private List<Pokedex> results;
 
-
 }
