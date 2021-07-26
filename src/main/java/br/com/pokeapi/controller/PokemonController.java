@@ -8,16 +8,15 @@ import java.util.*;
 
 
 @RestController
-@ResponseBody
-@RequestMapping("/")
 public class PokemonController {
-    
-    @GetMapping("/pokemons")
+
+    @RequestMapping("/pokemons")
+    @GetMapping
     public List<Pokedex> findAllPoke(int page) {
 
         RestTemplate res = new RestTemplate();
 
-        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", PokedexList.class);
+        PokedexList response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0", PokedexList.class);
 
         List<Pokedex> results = response.getResults();
 
