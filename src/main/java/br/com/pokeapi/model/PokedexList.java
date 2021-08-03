@@ -13,5 +13,7 @@ import java.util.List;
 public class PokedexList {
 
       private List<Pokedex> results;
+      private  List<Pokedex> types;
+      private List<Pokedex>  stats;
 
 }

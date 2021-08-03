@@ -4,6 +4,7 @@ package br.com.pokeapi.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @NoArgsConstructor
@@ -12,22 +13,21 @@ import lombok.NoArgsConstructor;
 
 public class Pokedex {
 
-
-    private  Integer id;
-    private String name;
-    private String backgroundColor;
-    private int attack;
-    private int defense;
-    private String type;
+    private  String  name;
     private String  url;
+    private  Type type;
+    private  Stats stat;
+    private Integer base_stat;
 
-    public Pokedex(Integer id, String name, String backgroundColor, int attack, int defense, String type, String url) {
-        this.id = id;
-        this.name = name;
-        this.backgroundColor = backgroundColor;
-        this.attack = attack;
-        this.defense = defense;
-        this.type = type;
-        this.url = url;
+    @Override
+    public String toString() {
+        return "Pokedex{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", type=" + type +
+                ", stat=" + stat +
+                ", base_stat=" + base_stat +
+                '}';
     }
+
 }
