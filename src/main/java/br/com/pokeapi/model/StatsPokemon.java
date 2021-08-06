@@ -4,14 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Type {
-    private String Slot;
-    private TypesAtr  type;
-
-
+public class StatsPokemon {
+     private String name;
 }
+

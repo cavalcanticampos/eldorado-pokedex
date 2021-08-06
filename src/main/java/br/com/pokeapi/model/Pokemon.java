@@ -9,9 +9,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Type {
-    private String Slot;
-    private TypesAtr  type;
-
+public class Pokemon {
+    private Integer  id;
+    private String name;
+    private List<Type> types;
+    private SpritesOther sprites;
+    private List<Stats>  stats;
 
 }
