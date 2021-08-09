@@ -10,10 +10,14 @@ import java.io.IOException;
 import java.util.*;
 
 @RestController
-@RequestMapping("/")
 
 public class PokemonController {
 
+
+    @RequestMapping("/")
+   public  String  idex(){
+       return "=====REST-API=====";
+   }
 
     @GetMapping("/pagepokemon")
     public List findAllPoke(int page ) throws IOException {
@@ -59,7 +63,6 @@ public class PokemonController {
             Pokemon pokemon  = res.getForObject(results.get(i).getUrl(),Pokemon.class);
             array.add(pokemon);
         }
-
 
           return  array;
 
