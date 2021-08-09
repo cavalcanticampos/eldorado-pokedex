@@ -17,33 +17,37 @@ public class PokemonController {
         return "=============================================================================Rest-api=========================================";
     }
 
-
     @GetMapping("/pokemons")
     public List<Pokemon> findAllPoke(int page ){
 
-        List<Pokemon>  array = new ArrayList<>();
+        List<Pokemon> array = new ArrayList<>();
         int i;
         int pageSize = 9;
+        int fromIndex;
         RestTemplate res = new RestTemplate();
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0", ListPokemons.class);
+        if ( page == 0) {
+             fromIndex = 0;
+        } else {
+             fromIndex = (page - 1) * pageSize;
+        }
+
+        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0"+ fromIndex, ListPokemons.class);
         assert response != null;
         List<PokemonResults> results = response.getResults();
 
-       for(i=0; i< results.size(); i++){
-           Pokemon pokemon  = res.getForObject(results.get(i).getUrl(),Pokemon.class);
-           array.add(pokemon);
-       }
-       if (page <= 0) {
-            throw new IllegalArgumentException("invalid page size: " + pageSize);
-       }
-        int fromIndex = (page - 1) * pageSize;
+        for(i=0; i< results.size(); i++){
+            Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
+            array.add(pokemon);
+        }
 
-       if (array.size() < fromIndex) {
+        if (array.size() < fromIndex) {
             return Collections.emptyList();
         }
 
         return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
+
+
 
     }
 
