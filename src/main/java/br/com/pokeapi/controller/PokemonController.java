@@ -18,21 +18,16 @@ public class PokemonController {
     }
 
     @GetMapping("/pokemons")
-    public List<Pokemon> findAllPoke(int page ){
+    public List<Pokemon> findAllPoke( ){
 
         List<Pokemon> array = new ArrayList<>();
         int i;
-        int pageSize = 9;
-        int fromIndex;
+
         RestTemplate res = new RestTemplate();
 
-        if ( page == 0) {
-             fromIndex = 0;
-        } else {
-             fromIndex = (page - 1) * pageSize;
-        }
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0"+ fromIndex, ListPokemons.class);
+
+        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", ListPokemons.class);
         assert response != null;
         List<PokemonResults> results = response.getResults();
 
@@ -41,11 +36,9 @@ public class PokemonController {
             array.add(pokemon);
         }
 
-        if (array.size() < fromIndex) {
-            return Collections.emptyList();
-        }
 
-        return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
+
+        return array;
 
 
 
