@@ -10,12 +10,16 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @RestController
-@RequestMapping("/pokemons")
+
 public class PokemonController {
+    @RequestMapping("/pokemons")
+     public  String index(){
+
+         return "  its code was  runing ";
+     }
 
 
-
-    @GetMapping
+    @GetMapping("/pokemons/list")
     public List<Pokemon> findAllPoke( ){
 
         List<Pokemon> array = new ArrayList<>();
