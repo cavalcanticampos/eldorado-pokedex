@@ -3,7 +3,6 @@ import br.com.pokeapi.model.Pokemon;
 import br.com.pokeapi.model.PokemonResults;
 import br.com.pokeapi.model.ListPokemons;
 
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,10 +10,15 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @RestController
-@RequestMapping("/pokemons")
-public class PokemonController {
 
-    @GetMapping
+public class PokemonController {
+    @RequestMapping("/")
+    public String index(){
+        return "=============================================================================Rest-api=========================================";
+    }
+
+
+    @GetMapping("/pokemons")
     public List<Pokemon> findAllPoke(int page ){
 
         List<Pokemon>  array = new ArrayList<>();
