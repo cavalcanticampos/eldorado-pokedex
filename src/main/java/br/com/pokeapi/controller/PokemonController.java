@@ -14,9 +14,7 @@ import java.util.*;
 @RequestMapping("/pokemons")
 public class PokemonController {
 
-
-
-    @GetMapping("/")
+    @GetMapping
     public List<Pokemon> findAllPoke(int page ){
 
         List<Pokemon>  array = new ArrayList<>();
@@ -24,7 +22,7 @@ public class PokemonController {
         int pageSize = 9;
         RestTemplate res = new RestTemplate();
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", ListPokemons.class);
+        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0", ListPokemons.class);
         List<PokemonResults> results = response.getResults();
 
        for(i=0; i< results.size(); i++){
