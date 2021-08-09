@@ -23,6 +23,7 @@ public class PokemonController {
         RestTemplate res = new RestTemplate();
 
         ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0", ListPokemons.class);
+        assert response != null;
         List<PokemonResults> results = response.getResults();
 
        for(i=0; i< results.size(); i++){
@@ -34,7 +35,7 @@ public class PokemonController {
        }
         int fromIndex = (page - 1) * pageSize;
 
-       if (array == null || array.size() < fromIndex) {
+       if (array.size() < fromIndex) {
             return Collections.emptyList();
         }
 
