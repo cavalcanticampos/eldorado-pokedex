@@ -14,17 +14,22 @@ import java.util.*;
 public class PokemonController {
 
     @RequestMapping("/pokemons")
-    public String findAllPoke( ){
+    public List<String> findAllPoke( ){
 
        // List<Pokemon> array = new ArrayList<>();
        // int i;
-        RestTemplate res = new RestTemplate();
+        //RestTemplate res = new RestTemplate();
 
        // ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", ListPokemons.class);
-        String resp = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0",String.class);
+        //String resp = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0",String.class);
        // assert response != null;
         //List<PokemonResults> results = response.getResults();
 
+        List<String> users = new ArrayList<>();
+        users.add("josaph");
+        users.add("joel");
+        users.add("jennifer");
+        users.add("lilia");
 
         //for(i=0; i< results.size(); i++){
            // Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
@@ -33,7 +38,7 @@ public class PokemonController {
 
 
 
-        return resp;
+        return users;
 
     }
 
