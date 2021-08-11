@@ -16,6 +16,7 @@ public class PokemonController {
     public List<Pokemon> findAllPoke(   ){
         List<Pokemon> array = new ArrayList<>();
         int i;
+        String URL = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
        // int pageSize = 9;
         RestTemplate res = new RestTemplate();
       //  int fromIndex;
@@ -27,7 +28,7 @@ public class PokemonController {
           //   fromIndex = (page - 1) * pageSize;
        // }
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=", ListPokemons.class);
+        ListPokemons response = res.getForObject(URL, ListPokemons.class);
         assert response != null;
         List<PokemonResults> results = response.getResults();
 
