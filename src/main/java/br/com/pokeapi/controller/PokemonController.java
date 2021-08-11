@@ -2,7 +2,6 @@ package br.com.pokeapi.controller;
 import br.com.pokeapi.model.Pokemon;
 import br.com.pokeapi.model.PokemonResults;
 import br.com.pokeapi.model.ListPokemons;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,32 +13,35 @@ import java.util.*;
 public class PokemonController {
 
     @RequestMapping("/pokemons")
-    public List<String> findAllPoke( ){
+    public List<Pokemon> findAllPoke(   ){
+        List<Pokemon> array = new ArrayList<>();
+        int i;
+       // int pageSize = 9;
+        RestTemplate res = new RestTemplate();
+      //  int fromIndex;
 
-       // List<Pokemon> array = new ArrayList<>();
-       // int i;
-        //RestTemplate res = new RestTemplate();
+      //  if ( page <= 0) {
+      //      fromIndex = 0;
 
-       // ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", ListPokemons.class);
-        //String resp = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0",String.class);
-       // assert response != null;
-        //List<PokemonResults> results = response.getResults();
+      //  } else {
+          //   fromIndex = (page - 1) * pageSize;
+       // }
 
-        List<String> users = new ArrayList<>();
-        users.add("josaph");
-        users.add("joel");
-        users.add("jennifer");
-        users.add("lilia");
+        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=", ListPokemons.class);
+        assert response != null;
+        List<PokemonResults> results = response.getResults();
 
-        //for(i=0; i< results.size(); i++){
-           // Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
-           // array.add(pokemon);
+        for(i=0; i< results.size(); i++){
+            Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
+            array.add(pokemon);
+        }
+
+        //if (array.size() < fromIndex) {
+            //return Collections.emptyList();
      //   }
 
-
-
-        return users;
-
+       // return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
+        return array;
     }
 
 }
