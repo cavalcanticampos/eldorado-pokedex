@@ -27,7 +27,7 @@ public class PokemonController {
           //   fromIndex = (page - 1) * pageSize;
        // }
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=", ListPokemons.class);
+        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=9&offset=", ListPokemons.class);
         assert response != null;
         List<PokemonResults> results = response.getResults();
 
