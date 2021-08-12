@@ -13,10 +13,10 @@ import java.util.*;
 public class PokemonController {
 
     @GetMapping("/pokemons")
-    public List<Pokemon> findAllPoke(   ){
+    public List findAllPoke(){
         List<Pokemon> array = new ArrayList<>();
         int i;
-        String URL = "https://pokeapi.co/api/v2/pokemon?limit=200&offset=0";
+        String URL = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
        // int pageSize = 9;
         RestTemplate res = new RestTemplate();
       //  int fromIndex;
@@ -32,17 +32,17 @@ public class PokemonController {
         assert response != null;
         List<PokemonResults> results = response.getResults();
 
-        for(i=0; i< results.size(); i++){
-            Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
-            array.add(pokemon);
-        }
+       // for(i=0; i< results.size(); i++){
+            //Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
+            //array.add(pokemon);
+        //}
 
         //if (array.size() < fromIndex) {
             //return Collections.emptyList();
      //   }
 
        // return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
-        return array;
+        return results;
     }
 
 }
