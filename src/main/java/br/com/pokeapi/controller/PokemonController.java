@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @RestController
-
+@RequestMapping
 public class PokemonController {
 
-    @RequestMapping("/pokemons")
+    @GetMapping("/pokemons")
     public List<Pokemon> findAllPoke(   ){
         List<Pokemon> array = new ArrayList<>();
         int i;
-        String URL = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
+        String URL = "https://pokeapi.co/api/v2/pokemon?limit=200&offset=0";
        // int pageSize = 9;
         RestTemplate res = new RestTemplate();
       //  int fromIndex;
