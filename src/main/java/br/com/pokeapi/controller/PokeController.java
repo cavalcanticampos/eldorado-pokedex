@@ -28,12 +28,9 @@ public class PokeController {
         ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", ListPokemons.class);
         List<PokemonResults> results = response.getResults();
 
-        for(i=0; i< results.size(); i++){
-            Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
-            array.add(pokemon);
-            }
 
-        return array;
+
+        return results;
 
 
     }
