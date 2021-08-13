@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/pokemons"})
+@RequestMapping("/pokeapi")
 
 public class PokeController {
 
-    @GetMapping
+    @GetMapping("/pokemons")
     public List findAll(){
 
         List<Pokemon> array = new ArrayList<>();
