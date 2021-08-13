@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,8 +15,7 @@ import lombok.NoArgsConstructor;
 
 public class PokemonResults {
 
-
-    private String  url;
+  private List<Results>   results;
 
 
 }

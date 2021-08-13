@@ -1,7 +1,6 @@
 package br.com.pokeapi.controller;
 
 
-import br.com.pokeapi.model.ListPokemons;
 import br.com.pokeapi.model.Pokemon;
 import br.com.pokeapi.model.PokemonResults;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +24,15 @@ public class PokeController {
 
         RestTemplate res = new RestTemplate();
 
-        ListPokemons response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", ListPokemons.class);
-        List<PokemonResults> results = response.getResults();
+        PokemonResults response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", PokemonResults.class);
+
+        System.out.println(response);
+
+        List poke = response.getResults();
 
 
 
-        return results;
+        return poke ;
 
 
     }
