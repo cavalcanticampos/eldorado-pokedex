@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SpringBootApplication
 public class PokeapiApplication {
 
-	
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(PokeapiApplication.class, args);
