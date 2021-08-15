@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="pokeapi" target="1.8" />
+      <module name="pokeapi" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

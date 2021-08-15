@@ -15,20 +15,20 @@ import java.util.List;
 public class PokeController {
 
     @GetMapping
-    public String  findAll(){
+    public List findAll(){
 
-       // List<Pokemon> array = new ArrayList<>();
-        //int i;
+        List<Pokemon> array = new ArrayList<>();
+        int i;
 
         RestTemplate res = new RestTemplate();
 
-        String response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", String.class);
+        PokemonResults response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0", PokemonResults.class);
 
         System.out.println(response);
 
-        //List poke = response.getResults();
+        List poke = response.getResults();
 
-        return  response ;
+        return poke ;
 
 
     }
