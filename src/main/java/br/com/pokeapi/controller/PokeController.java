@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PokeController {
 
-    @GetMapping("/pokemons")
+    @GetMapping
     public List findAll(){
 
         List<Pokemon> array = new ArrayList<>();
