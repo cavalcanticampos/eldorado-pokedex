@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.pokeapi.PokeapiApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.087 s - in br.com.pokeapi.PokeapiApplicationTests
