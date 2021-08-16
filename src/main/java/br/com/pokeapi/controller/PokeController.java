@@ -19,15 +19,20 @@ import java.util.List;
 @RequestMapping("/pokemons")
 public class PokeController {
 
+
+
     @GetMapping
-    public List findAll(int page){
+    public List findAll(Integer page){
 
         List<Pokemon> array = new ArrayList<>();
         int i;
         int pageSize = 9;
-
-
-
+        int fromIndex;
+        if (page == null || page == 0) {
+             fromIndex= 0;
+        } else {
+            fromIndex = (page - 1) * pageSize;
+        }
 
 
 
@@ -48,15 +53,11 @@ public class PokeController {
             Pokemon pokemon = res.getForObject(results.get(i).getUrl(),Pokemon.class);
             array.add(pokemon);
         }
-
-        if(pageSize <= 0 || page <= 0) {
-            throw new IllegalArgumentException("invalid page size: " + pageSize);
-        }
-
-        int fromIndex = (page - 1) * pageSize;
-        if(array == null || array.size() <= fromIndex){
+        if (array.size() < fromIndex) {
             return Collections.emptyList();
         }
+
+
 
 
 
