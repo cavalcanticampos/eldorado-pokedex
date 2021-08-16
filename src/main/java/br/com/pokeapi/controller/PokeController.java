@@ -2,10 +2,13 @@ package br.com.pokeapi.controller;
 import br.com.pokeapi.model.Pokemon;
 import br.com.pokeapi.model.PokemonResults;
 import br.com.pokeapi.model.Results;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +19,16 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/pokemons")
+
+@RequestMapping
+@Api("Api Rest Pokemons")
+@CrossOrigin(origins="*")
 public class PokeController {
 
 
 
-    @GetMapping
+    @GetMapping("/pokemons")
+    @ApiOperation("Retorna uma lista de api com sua devidas propiedades")
     public List findAll(Integer page){
 
         List<Pokemon> array = new ArrayList<>();
