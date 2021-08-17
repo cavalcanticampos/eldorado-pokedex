@@ -15,5 +15,6 @@ public class Pokemon {
     private List<Type> types;
     private SpritesOther sprites;
     private List<Stats>  stats;
+    private String  backgroundColor;
 
 }
