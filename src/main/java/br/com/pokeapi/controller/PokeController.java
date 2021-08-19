@@ -1,16 +1,16 @@
 package br.com.pokeapi.controller;
 
 import br.com.pokeapi.model.*;
+import br.com.pokeapi.repository.PokemonRepository;
+import br.com.pokeapi.repository.PokemonsRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -26,8 +26,52 @@ import java.util.Objects;
 @CrossOrigin(origins = "*")
 public class PokeController {
 
+    @Autowired
+    private PokemonRepository pokemonRepository;
+    private PokemonsRepository pokemonsRepository;
 
-    @GetMapping("/pokemons")
+
+    @GetMapping("/data")
+    public List  getAll(){
+
+        int i;
+        List<Pokemon> array = new ArrayList<>();
+
+        CloseableHttpClient httpClient = HttpClients.custom()
+                .setSSLHostnameVerifier(new NoopHostnameVerifier())
+                .build();
+        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+        requestFactory.setHttpClient(httpClient);
+
+
+        RestTemplate res = new RestTemplate(requestFactory);
+        PokemonResults response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0", PokemonResults.class);
+
+        List<Results> results = response.getResults();
+
+
+        for (i = 0; i < results.size(); i++) {
+
+            Pokemon pokemon = res.getForObject(results.get(i).getUrl(), Pokemon.class);
+
+            array.add(pokemon);
+           // System.out.println(pokemon.getTypes().get(0).getType().getName());
+        }
+    return array;
+    }
+    @PostMapping("/create")
+     public Pokemon create (@RequestBody Pokemon pokemoncreate) {
+        return  pokemonRepository.save(pokemoncreate);
+    }
+
+
+    @GetMapping("/all")
+    public List All(){
+        List<Pokemons> pokemons = pokemonsRepository.findAll();
+        return pokemons;
+    }
+/*
+     @GetMapping("/pokemons")
     @ApiOperation("Retorna uma lista de api com sua devidas propiedades")
     public List findAll(Integer page) {
 
@@ -121,22 +165,18 @@ public class PokeController {
                 pokemon.setBackgroundColor("#A974BC");
             }
 
-
             array.add(pokemon);
-
-
             System.out.println(pokemon.getTypes().get(0).getType().getName());
 
-
         }
-
 
         if (array.size() < fromIndex) {
             return Collections.emptyList();
         }
         return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
 
-
     }
+
+ */
 
 }

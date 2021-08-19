@@ -7,20 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_POKEMONS")
-public class Pokemon {
+@Table(name = "TB_POKEMON")
+public class Pokemons {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer  id;
-    private String name;
-   // private List<Type> types;
-   // private SpritesOther sprites;
-   // private List<Stats>  stats;
-   // private String  backgroundColor;
 
+    private Integer  id;
+    private String   name;
+    private String   type;
+    private String attack;
+    private String  defese;
+    private String  backgroundColor;
 }
