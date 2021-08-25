@@ -1,10 +1,15 @@
 package br.com.pokeapi.controller;
 
+import br.com.pokeapi.controller.dto.PokemonDto;
 import br.com.pokeapi.model.*;
-import br.com.pokeapi.repository.PokemonRepository;
-import br.com.pokeapi.repository.PokemonsRepository;
+import br.com.pokeapi.repository.RepositoryResultData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -13,95 +18,46 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
-
 @RestController
-
 @RequestMapping
 @Api("Api Rest Pokemons")
 @CrossOrigin(origins = "*")
 public class PokeController {
 
     @Autowired
-    private PokemonRepository pokemonRepository;
-    private PokemonsRepository pokemonsRepository;
+    RepositoryResultData repository;
 
 
-    @GetMapping("/data")
-    public List  getAll(){
-
+    @GetMapping("/pokemonsresults")
+    @ApiOperation(
+            "Essa rota  chama o atributos de uma api externa e inseri  no banco de dados"
+    )
+    public List getAll(PokemonResults pokemonResults) throws IOException {
         int i;
-        List<Pokemon> array = new ArrayList<>();
+        List<Pokemon> findAll = new ArrayList<>();
+        Pokemonsattributes pokeAttributes;
 
-        CloseableHttpClient httpClient = HttpClients.custom()
+        CloseableHttpClient httpClient = HttpClients
+                .custom()
                 .setSSLHostnameVerifier(new NoopHostnameVerifier())
                 .build();
         HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         requestFactory.setHttpClient(httpClient);
 
-
         RestTemplate res = new RestTemplate(requestFactory);
-        PokemonResults response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0", PokemonResults.class);
 
-        List<Results> results = response.getResults();
-
+        pokemonResults =
+                res.getForObject(
+                        "https://pokeapi.co/api/v2/pokemon?limit=1117&offset=0",
+                        PokemonResults.class
+                );
+        List<Result> results = pokemonResults.getResults();
 
         for (i = 0; i < results.size(); i++) {
+            pokeAttributes =
+                    res.getForObject(results.get(i).getUrl(), Pokemonsattributes.class);
 
-            Pokemon pokemon = res.getForObject(results.get(i).getUrl(), Pokemon.class);
-
-            array.add(pokemon);
-           // System.out.println(pokemon.getTypes().get(0).getType().getName());
-        }
-    return array;
-    }
-    @PostMapping("/create")
-     public Pokemon create (@RequestBody Pokemon pokemoncreate) {
-        return  pokemonRepository.save(pokemoncreate);
-    }
-
-
-    @GetMapping("/all")
-    public List All(){
-        List<Pokemons> pokemons = pokemonsRepository.findAll();
-        return pokemons;
-    }
-/*
-     @GetMapping("/pokemons")
-    @ApiOperation("Retorna uma lista de api com sua devidas propiedades")
-    public List findAll(Integer page) {
-
-        List<Pokemon> array = new ArrayList<>();
-
-        int i;
-        int pageSize = 9;
-        int fromIndex;
-        if (page == null || page == 0) {
-            fromIndex = 0;
-        } else {
-            fromIndex = (page - 1) * pageSize;
-        }
-
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setSSLHostnameVerifier(new NoopHostnameVerifier())
-                .build();
-        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-        requestFactory.setHttpClient(httpClient);
-
-
-        RestTemplate res = new RestTemplate(requestFactory);
-        PokemonResults response = res.getForObject("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0", PokemonResults.class);
-
-        List<Results> results = response.getResults();
-
-
-        for (i = 0; i < results.size(); i++) {
-
-            Pokemon pokemon = res.getForObject(results.get(i).getUrl(), Pokemon.class);
+            System.out.println();
             String grass = "grass";
             String normal = "normal";
             String fighting = "fighting";
@@ -123,60 +79,188 @@ public class PokeController {
             String unknown = "unknown";
             String shadow = "shadow";
 
-            if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), grass)) {
-                pokemon.setBackgroundColor("#70A83B");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), normal)) {
-                pokemon.setBackgroundColor("#76AADB");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), fighting)) {
-                pokemon.setBackgroundColor("#F76545");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), flying)) {
-                pokemon.setBackgroundColor("#76AADB");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), poison)) {
-                pokemon.setBackgroundColor("#A974BC");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), ground)) {
-                pokemon.setBackgroundColor("#9B897B");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), rock)) {
-                pokemon.setBackgroundColor("#A1A1A1");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), bug)) {
-                pokemon.setBackgroundColor("#70A83B");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), ghost)) {
-                pokemon.setBackgroundColor("#A974BC");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), steel)) {
-                pokemon.setBackgroundColor("#A1A1A1");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), fire)) {
-                pokemon.setBackgroundColor("#F76545");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), water)) {
-                pokemon.setBackgroundColor("#A2CFF0");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), electric)) {
-                pokemon.setBackgroundColor("#F7C545");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), psychic)) {
-                pokemon.setBackgroundColor("#A974BC");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), ice)) {
-                pokemon.setBackgroundColor("#A2CFF0");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), dragon)) {
-                pokemon.setBackgroundColor("#F76545");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), dark)) {
-                pokemon.setBackgroundColor("#A1A1A1");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), fairy)) {
-                pokemon.setBackgroundColor("#A974BC");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), unknown)) {
-                pokemon.setBackgroundColor("#A1A1A1");
-            } else if (Objects.equals(pokemon.getTypes().get(0).getType().getName(), shadow)) {
-                pokemon.setBackgroundColor("#A974BC");
+            if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            grass
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#70A83B");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            normal
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#76AADB");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            fighting
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#F76545");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            flying
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#76AADB");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            poison
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A974BC");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            ground
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#9B897B");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            rock
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A1A1A1");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            bug
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#70A83B");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            ghost
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A974BC");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            steel
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A1A1A1");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            fire
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#F76545");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            water
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A2CFF0");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            electric
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#F7C545");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            psychic
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A974BC");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            ice
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A2CFF0");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            dragon
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#F76545");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            dark
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A1A1A1");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            fairy
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A974BC");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            unknown
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A1A1A1");
+            } else if (
+                    Objects.equals(
+                            pokeAttributes.getTypes().get(0).getType().getName(),
+                            shadow
+                    )
+            ) {
+                pokeAttributes.setBackgroundColor("#A974BC");
             }
 
-            array.add(pokemon);
-            System.out.println(pokemon.getTypes().get(0).getType().getName());
+            Pokemon pokemonAll = new Pokemon();
 
+            pokemonAll.setType(pokeAttributes.getTypes().get(0).getType().getName());
+            pokemonAll.setSprite(
+                    pokeAttributes
+                            .getSprites()
+                            .getOther()
+                            .getDream_world()
+                            .getFront_default()
+            );
+            pokemonAll.setAttack(pokeAttributes.getStats().get(1).getBase_stat());
+            pokemonAll.setDefense(pokeAttributes.getStats().get(2).getBase_stat());
+            pokemonAll.setBackgroundColor(pokeAttributes.getBackgroundColor());
+            pokemonAll.setName(results.get(i).getName());
+            repository.save(pokemonAll);
+            findAll.add(pokemonAll);
         }
-
-        if (array.size() < fromIndex) {
-            return Collections.emptyList();
-        }
-        return array.subList(fromIndex, Math.min(fromIndex + pageSize, array.size()));
-
+        return findAll;
     }
 
- */
+    @GetMapping("/pokemonsAll")
+    @ApiOperation(
+            "Essa rota retorna uma  lista de todos os pokemons vindo do banco de dados podendo passa um argumento PAGE para paginaçao"
+    )
+    public List<PokemonDto> pokemonsAll(Integer page) {
+        List<Pokemon> pokemon = repository.findAll();
 
+        int i;
+        int pageSize = 9;
+        int fromIndex;
+        if (page == null || page == 0) {
+            fromIndex = 0;
+        } else {
+            fromIndex = (page - 1) * pageSize;
+        }
+        if (pokemon.size() < fromIndex) {
+            return Collections.emptyList();
+        }
+        return PokemonDto.converter(
+                pokemon.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()))
+        );
+    }
 }
