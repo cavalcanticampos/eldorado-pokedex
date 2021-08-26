@@ -1,15 +1,10 @@
 package br.com.pokeapi.model;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.util.List;
 
 
 @NoArgsConstructor
-
 @Data
 @Entity
 @Table(name = "TB_POKEMONS")

@@ -248,7 +248,7 @@ public class PokeController {
     public List<PokemonDto> pokemonsAll(Integer page) {
         List<Pokemon> pokemon = repository.findAll();
 
-        int i;
+
         int pageSize = 9;
         int fromIndex;
         if (page == null || page == 0) {
