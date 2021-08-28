@@ -25,7 +25,6 @@ public class SwaggerConfig {
             return new Docket(DocumentationType.SWAGGER_2)
                     .select()
                     .apis(RequestHandlerSelectors.basePackage("br.com.pokeapi"))
-                    .paths(PathSelectors.ant("/pokemons*"))
                     .build().apiInfo(metaData());
         }
         private ApiInfo metaData() {

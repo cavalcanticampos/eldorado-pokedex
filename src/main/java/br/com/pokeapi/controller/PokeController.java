@@ -6,20 +6,22 @@ import br.com.pokeapi.repository.RepositoryResultData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping
+@RequestMapping("/")
 @Api("Api Rest Pokemons")
 @CrossOrigin(origins = "*")
 public class PokeController {
@@ -27,11 +29,7 @@ public class PokeController {
     @Autowired
     RepositoryResultData repository;
 
-
-    @GetMapping("/pokemonsresults")
-    @ApiOperation(
-            "Essa rota  chama o atributos de uma api externa e inseri  no banco de dados"
-    )
+    
     public List getAll(PokemonResults pokemonResults) throws IOException {
         int i;
         List<Pokemon> findAll = new ArrayList<>();
@@ -241,11 +239,11 @@ public class PokeController {
         return findAll;
     }
 
-    @GetMapping("/pokemonsAll")
+    @GetMapping("/pokemons")
     @ApiOperation(
             "Essa rota retorna uma  lista de todos os pokemons vindo do banco de dados podendo passa um argumento PAGE para paginaçao"
     )
-    public List<PokemonDto> pokemonsAll(Integer page) {
+    public List pokemonsAll(Integer page) {
         List<Pokemon> pokemon = repository.findAll();
 
 
@@ -259,8 +257,60 @@ public class PokeController {
         if (pokemon.size() < fromIndex) {
             return Collections.emptyList();
         }
-        return PokemonDto.converter(
-                pokemon.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()))
-        );
+        List<PokemonDto> ListDto = pokemon.stream().map(x->new PokemonDto(x)).collect(Collectors.toList());
+
+        System.out.println(pokemon.size());
+        return ListDto.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()));
+
     }
-}
+
+    @GetMapping("/pokemon/{id}")
+    @ApiOperation(value ="Retorna um unico pokemon")
+    public ResponseEntity<Pokemon> findById(@PathVariable Integer id){
+        return repository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
+    @PostMapping("/createPokemon")
+    @ApiOperation("Cria  um novo pokemon")
+    public Pokemon create(@RequestBody Pokemon pokemon){
+        return repository.save(pokemon);
+    }
+
+    @PutMapping("/pokemon/{id}")
+    @ApiOperation("Atualiza um pokemon")
+    public ResponseEntity update(@PathVariable("id") Integer id,
+                                 @RequestBody Pokemon pokemon) {
+        return repository.findById(id)
+                .map(pokemons -> {
+                    pokemons.setName(pokemon.getName());
+                    pokemons.setType(pokemon.getType());
+                    pokemons.setSprite(pokemon.getSprite());
+                    pokemons.setAttack(pokemon.getAttack());
+                    pokemons.setDefense(pokemon.getDefense());
+                    pokemons.setBackgroundColor(pokemon.getBackgroundColor());
+
+                    Pokemon updated = repository.save(pokemons);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/pokemon/{id}")
+    @ApiOperation("Deleta um pokemon")
+    public ResponseEntity <?> delete(@PathVariable Integer id) {
+        return repository.findById(id)
+                .map(record -> {
+                    repository.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+
+  }
+
+
+
+
+
