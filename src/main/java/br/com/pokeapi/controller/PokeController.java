@@ -52,6 +52,49 @@ public class PokeController {
 
     }
 
+    @GetMapping("/pokemon/{id}")
+    @ApiOperation(value ="Retorna um unico pokemon")
+    public ResponseEntity<Pokemon> findById(@PathVariable Integer id){
+        return repository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
+    @PostMapping("/createPokemon")
+    @ApiOperation("Cria  um novo pokemon")
+    public Pokemon create(@RequestBody Pokemon pokemon){
+        return repository.save(pokemon);
+    }
+
+    @PutMapping("/pokemon/{id}")
+    @ApiOperation("Atualiza um pokemon")
+    public ResponseEntity update(@PathVariable("id") Integer id,
+                                 @RequestBody Pokemon pokemon) {
+        return repository.findById(id)
+                .map(pokemons -> {
+                    pokemons.setName(pokemon.getName());
+                    pokemons.setType(pokemon.getType());
+                    pokemons.setSprite(pokemon.getSprite());
+                    pokemons.setAttack(pokemon.getAttack());
+                    pokemons.setDefense(pokemon.getDefense());
+                    pokemons.setBackgroundColor(pokemon.getBackgroundColor());
+
+                    Pokemon updated = repository.save(pokemons);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/pokemon/{id}")
+    @ApiOperation("Deleta um pokemon")
+    public ResponseEntity <?> delete(@PathVariable Integer id) {
+        return repository.findById(id)
+                .map(record -> {
+                    repository.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
 
   }
 
