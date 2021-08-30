@@ -1,1 +1,1 @@
-web: java -Dspring.profiles.active=default --server.port=$PORT -jar target/*.jar
+web: java -jar target/pokeapi-1.0.0.jar
