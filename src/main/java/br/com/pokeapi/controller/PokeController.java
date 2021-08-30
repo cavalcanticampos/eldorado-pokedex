@@ -31,7 +31,7 @@ public class PokeController {
     RepositoryResultData repository;
 
 
-    @GetMapping("/addinDataBase")
+    
     public List getAll(PokemonResults pokemonResults) throws IOException {
         int i;
         List<Pokemon> findAll = new ArrayList<>();
