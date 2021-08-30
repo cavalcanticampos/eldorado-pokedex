@@ -5,7 +5,6 @@ import br.com.pokeapi.model.Pokemon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
@@ -29,9 +28,6 @@ public class PokemonDto {
         this.defense = pokemon.getDefense();
         this.backgroundColor = pokemon.getBackgroundColor();
     }
-
-
-
 
     public static List<PokemonDto> converter(List<Pokemon> pokemon) {
         return pokemon.stream().map(PokemonDto::new).collect(Collectors.toList());

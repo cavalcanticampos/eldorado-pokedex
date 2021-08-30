@@ -46,10 +46,10 @@ public class PokeController {
         if (pokemon.size() < fromIndex) {
             return Collections.emptyList();
         }
-        //  List<PokemonDto> ListDto = pokemon.stream().map(x->new PokemonDto(x)).collect(Collectors.toList());
+       
 
         System.out.println(pokemon.size());
-        return pokemon.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()));
+        return  PokemonDto.converter(pokemon.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()))) ;
 
     }
 

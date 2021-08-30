@@ -23,7 +23,6 @@ import javax.persistence.*;
     public Pokemon(Integer id, String name, String type, String sprite, String attack, String defense, String backgroundColor) {
         this.id = id;
         this.name = name;
-
         this.type = type;
         this.sprite = sprite;
         this.attack = attack;
