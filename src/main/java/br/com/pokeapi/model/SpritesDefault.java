@@ -10,7 +10,6 @@ import javax.persistence.Embeddable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
 
 public class SpritesDefault {
     private String front_default;
