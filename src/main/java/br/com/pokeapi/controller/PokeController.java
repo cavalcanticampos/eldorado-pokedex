@@ -26,13 +26,13 @@ public class PokeController {
     @Autowired
     RepositoryResultData repository;
 
-    
-
     @GetMapping("/pokemons")
     @ApiOperation(
             "Essa rota retorna uma  lista de todos os pokemons vindo do banco de dados podendo passa um argumento PAGE para paginaçao"
     )
     public List pokemonsAll(Integer page) {
+
+
         List<Pokemon> pokemon = repository.findAll();
 
 
@@ -46,7 +46,6 @@ public class PokeController {
         if (pokemon.size() < fromIndex) {
             return Collections.emptyList();
         }
-       
 
         System.out.println(pokemon.size());
         return  PokemonDto.converter(pokemon.subList(fromIndex, Math.min(fromIndex + pageSize, pokemon.size()))) ;
