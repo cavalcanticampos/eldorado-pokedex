@@ -31,7 +31,10 @@ public class PokeController {
     RepositoryResultData repository;
 
 
-    
+   @PostMapping("/addPpkemonsInDataBase")
+   @ApiOperation(
+           "Essa  rota chama  os atributos da api externa , armazena no banco de dados local"
+   )
     public List getAll(PokemonResults pokemonResults) throws IOException {
         int i;
         List<Pokemon> findAll = new ArrayList<>();
