@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import Cards from './cards/Cards'
 
 import { Container, Title } from './Stylespokedex'
-import { getAllPokemon, getPokemon } from '../../service/api'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import { usePoke } from '../../components/context/Provider'
 import Search from './search/Search'
+import api from '../../service/api'
 
 
 function Pokedex() {
@@ -18,73 +18,70 @@ function Pokedex() {
     setActive,
     currentOffset,
     setCurrentOffset,
+    pokemonData,
+
+
   } = usePoke()
 
-  const offset = 9
-  const initialURL = `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-    currentOffset * offset
-  }`
-  // console.log(pokemonData)
+
+
+  useEffect(() => {
+    async function loadPokemon() {
+      api.get(`/pokemons?page=${currentOffset}`)
+        .then(response => {
+          console.log(response.data)
+          setPokemonData(response.data);
+        })
+        .catch(error => {
+          console.log('Error getting fake data: ' + error);
+        })
+
+
+    }
+    loadPokemon()
+  }, [currentOffset])
+
 
   const Searchpokemon = async (name) => {
- 
-    var regex = `${search}`
-    var isSuggestedPokemon = new RegExp(regex,'ig')
 
-    let response = await getAllPokemon(
-      'https://pokeapi.co/api/v2/pokemon?limit=200',
+    var regex = `${search}`
+    var isSuggestedPokemon = new RegExp(regex, 'ig')
+
+    const response = await api.get(
+      `/pokemons?page=${currentOffset}`
     )
     let suggestedPokemons = []
-    response.results.forEach((data) => {
+    pokemonData.forEach((data) => {
       if (data.name.match(isSuggestedPokemon)) {
         suggestedPokemons.push(data)
       }
     })
-    await loadPokemon(suggestedPokemons)
-
+    setPokemonData(suggestedPokemons)
     console.log('suggestedPokemons ', suggestedPokemons)
+    return suggestedPokemons;
+
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      let response = await getAllPokemon(initialURL)
-      await loadPokemon(response.results)
-    }
-    fetchData()
-  }, [])
 
-  const loadPokemon = async (data) => {
-    let _pokemonData = await Promise.all(
-      data.map(async (pokemon) => {
-        let pokemonRecord = await getPokemon(pokemon)
-        return pokemonRecord
-      }),
-    )
-    setPokemonData(_pokemonData)
-  }
 
-  const nextPagePokemon = async () => {
-    const currentOffsetAux = currentOffset + 1
+  const nextPagePokemon = () => {
+
     setCurrentOffset(currentOffset + 1)
     setActive(active + 1)
-    let response = await getAllPokemon(
-      `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-        currentOffsetAux * offset
-      }`,
+    api.get(
+      `/pokemons?page=${currentOffset}`
     )
-    await loadPokemon(response.results)
+
   }
 
-  const previousPagePokemon = async () => {
-    const currentOffsetAux = currentOffset - 1
+  const previousPagePokemon = () => {
+
     setCurrentOffset(currentOffset - 1)
     setActive(active - 1)
-    let response = await getAllPokemon(
-      `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-        currentOffsetAux * offset
-      }`,
+    api.get(
+      `/pokemons?page=${currentOffset}`
     )
-    await loadPokemon(response.results)
+
   }
 
   return (
@@ -96,8 +93,9 @@ function Pokedex() {
         </Title>
         <Search Searchpokemon={Searchpokemon} />
         <Cards
-          previousPagePokemon={previousPagePokemon}
           nextPagePokemon={nextPagePokemon}
+          previousPagePokemon={previousPagePokemon}
+
         />
         <Footer />
       </Container>

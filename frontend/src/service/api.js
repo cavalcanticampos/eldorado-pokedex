@@ -1,18 +1,7 @@
+import axios from "axios";
 
-  export function getPokemon( {url} ) {
-    return new Promise((resolve, reject) => {
-        fetch(url).then(res => res.json())
-            .then(data => {
-                resolve(data)
-            })
-    });
-}
+const api = axios.create({
+  baseURL: "https://pokedexapi-test.herokuapp.com",
+});
 
-export async function getAllPokemon(url) {
-    return new Promise((resolve, reject) => {
-        fetch(url).then(res => res.json())
-            .then(data => {
-                resolve(data)
-            })
-    });
-}
+export default api;
