@@ -19,9 +19,19 @@ function Pokedex() {
     currentOffset,
     setCurrentOffset,
     pokemonData,
+    setInitialdatapokemon,
+    initialdatapokemon
 
 
   } = usePoke()
+
+
+  useEffect(() => {
+    if(!search){
+      setPokemonData(initialdatapokemon)
+      return
+    }
+  }, [search])
 
 
 
@@ -31,6 +41,7 @@ function Pokedex() {
         .then(response => {
           console.log(response.data)
           setPokemonData(response.data);
+          setInitialdatapokemon(response.data)
         })
         .catch(error => {
           console.log('Error getting fake data: ' + error);

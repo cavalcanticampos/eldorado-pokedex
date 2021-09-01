@@ -10,6 +10,8 @@ export default function PokeProvider({ children }) {
   const [currentOffset, setCurrentOffset] = useState(1);
   const [initial ,setInitial] = useState([])
   const [filteredData,setFilteredData] = useState(pokemonData);
+  const [initialdatapokemon, setInitialdatapokemon] = useState([])
+
 
 
   return (
@@ -27,6 +29,8 @@ export default function PokeProvider({ children }) {
         setInitial,
         filteredData,
         setFilteredData,
+        initialdatapokemon, 
+        setInitialdatapokemon
       }}
     >
       {children}
@@ -48,7 +52,9 @@ export function usePoke() {
     initial,
     setInitial,
     filteredData,
-    setFilteredData
+    setFilteredData,
+    initialdatapokemon, 
+    setInitialdatapokemon
   } = context;
   return {
     pokemonData,
@@ -61,6 +67,7 @@ export function usePoke() {
     setCurrentOffset,
     initial,setInitial,
     filteredData,
-    setFilteredData
+    setFilteredData,
+    initialdatapokemon, setInitialdatapokemon
   };
 }
