@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 import { colors } from "../../colorstyles";
-import {breakpoints} from "../../breakstyles";
+import { breakpoints } from "../../breakstyles";
 
 export const NavContainer = styled.header`
-  background:${colors.yellow};
+  background: ${colors.yellow};
   box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
   display: flex;
 `;
@@ -23,7 +23,7 @@ export const Nav = styled.nav`
     margin: 8px 25px;
   }
 
-  @media (max-width:${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.mobile}) {
     margin: 10px 25px;
   }
 `;
@@ -80,7 +80,7 @@ export const NavLinks = styled(LinkR)`
 
 export const MobileContainer = styled.div`
   background: ${colors.yellowGradient};
-  box-shadow: 4px 4px 24px ${colors.shadowmob} ;
+  box-shadow: 4px 4px 24px ${colors.shadowmob};
   border-radius: 0px 0px 16px 16px;
   width: inherit;
   height: 344px;

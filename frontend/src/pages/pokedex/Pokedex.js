@@ -1,99 +1,92 @@
-import React, { useEffect } from 'react'
-import Cards from './cards/Cards'
-
-import { Container, Title } from './Stylespokedex'
-import Footer from '../../components/footer/Footer'
-import Header from '../../components/header/Header'
-import { usePoke } from '../../components/context/Provider'
-import Search from './search/Search'
-import api from '../../service/api'
-
+import React, { useEffect, useState } from "react";
+import Cards from "./cards/Cards";
+import { Container, Title } from "./Stylespokedex";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import { usePoke } from "../../components/context/Provider";
+import Search from "./search/Search";
+import api from "../../service/api";
+import { useLocation, useHistory } from "react-router-dom";
+import qs from "query-string";
 
 function Pokedex() {
   const {
-
     setPokemonData,
     search,
     active,
     setActive,
-    currentOffset,
-    setCurrentOffset,
     pokemonData,
     setInitialdatapokemon,
     initialdatapokemon
+  } = usePoke();
 
+  let location = useLocation();
+  let history = useHistory();
+  const [actualPage, setActualPage] = useState(getActualPage() || 1);
 
-  } = usePoke()
-
+  function getActualPage() {
+    const queryParams = qs.parse(location.search);
+    const page = queryParams.page;
+    return page ? Number(page) : undefined;
+  }
 
   useEffect(() => {
-    if(!search){
-      setPokemonData(initialdatapokemon)
-      return
+    const queryParams = qs.parse(location.search);
+    history.push({
+      search: qs.stringify({
+        ...queryParams,
+        page: actualPage,
+      }),
+    });
+  }, [actualPage]);
+
+  useEffect(() => {
+    if (!search) {
+      setPokemonData(initialdatapokemon);
+      return;
     }
-  }, [search])
-
-
+  }, [search]);
 
   useEffect(() => {
     async function loadPokemon() {
-      api.get(`/pokemons?page=${currentOffset}`)
-        .then(response => {
-          console.log(response.data)
+      api
+        .get(`/pokemons?page=${actualPage}`)
+        .then((response) => {
+          console.log(response.data);
           setPokemonData(response.data);
-          setInitialdatapokemon(response.data)
+          setInitialdatapokemon(response.data);
         })
-        .catch(error => {
-          console.log('Error getting fake data: ' + error);
-        })
-
-
+        .catch((error) => {
+          console.log("Error getting fake data: " + error);
+        });
     }
-    loadPokemon()
-  }, [currentOffset])
+    loadPokemon();
+  }, [actualPage]);
 
+  const Searchpokemon = async () => {
+    var regex = `${search}`;
+    var isSuggestedPokemon = new RegExp(regex, "ig");
 
-  const Searchpokemon = async (name) => {
-
-    var regex = `${search}`
-    var isSuggestedPokemon = new RegExp(regex, 'ig')
-
-    const response = await api.get(
-      `/pokemons?page=${currentOffset}`
-    )
-    let suggestedPokemons = []
+    let suggestedPokemons = [];
     pokemonData.forEach((data) => {
       if (data.name.match(isSuggestedPokemon)) {
-        suggestedPokemons.push(data)
+        suggestedPokemons.push(data);
       }
-    })
-    setPokemonData(suggestedPokemons)
-    console.log('suggestedPokemons ', suggestedPokemons)
+    });
+    setPokemonData(suggestedPokemons);
+    console.log("suggestedPokemons ", suggestedPokemons);
     return suggestedPokemons;
-
-  }
-
-
+  };
 
   const nextPagePokemon = () => {
-
-    setCurrentOffset(currentOffset + 1)
-    setActive(active + 1)
-    api.get(
-      `/pokemons?page=${currentOffset}`
-    )
-
-  }
+    setActualPage(actualPage + 1);
+    setActive(active + 1);
+  };
 
   const previousPagePokemon = () => {
-
-    setCurrentOffset(currentOffset - 1)
-    setActive(active - 1)
-    api.get(
-      `/pokemons?page=${currentOffset}`
-    )
-
-  }
+    setActualPage(actualPage - 1);
+    setActive(active - 1);
+  };
 
   return (
     <>
@@ -106,12 +99,12 @@ function Pokedex() {
         <Cards
           nextPagePokemon={nextPagePokemon}
           previousPagePokemon={previousPagePokemon}
-
+          actualPage={actualPage}
         />
         <Footer />
       </Container>
     </>
-  )
+  );
 }
 
-export default Pokedex
+export default Pokedex;

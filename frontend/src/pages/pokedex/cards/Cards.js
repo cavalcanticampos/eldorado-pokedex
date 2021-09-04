@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
+import React from "react";
 import {
   ContainerCard,
   WrapperCards,
@@ -9,16 +8,15 @@ import {
   CardSkillItems,
   CardTag,
   CardImg,
-} from './StylesCard'
-import { Container, Item } from '../pagination/StylesPagination'
-import { colors } from '../../../colorstyles'
-import { usePoke } from '../../../components/context/Provider'
-export default function Cards({ nextPagePokemon, previousPagePokemon }) {
-  const { pokemonData, active,
-    setCurrentOffset, } = usePoke()
- 
-
-  
+} from "./StylesCard";
+import { Container, Item } from "../pagination/StylesPagination";
+import { usePoke } from "../../../components/context/Provider";
+export default function Cards({
+  nextPagePokemon,
+  previousPagePokemon,
+  actualPage,
+}) {
+  const { pokemonData, active } = usePoke();
 
   return (
     <>
@@ -46,24 +44,21 @@ export default function Cards({ nextPagePokemon, previousPagePokemon }) {
             </CardSkill>
 
             <CardImg backgroundColor={pokemon.backgroundColor}>
-              <img
-                src={pokemon.sprite}
-                alt={pokemon.name}
-              />
+              <img src={pokemon.sprite} alt={pokemon.name} />
             </CardImg>
           </WrapperCards>
         ))}
       </ContainerCard>
 
       <Container>
-        {active - 1 === 0 ? (
-          ''
+        {actualPage - 1 === 0 ? (
+          ""
         ) : (
-          <Item   onClick={previousPagePokemon}>{active - 1}</Item>
+          <Item onClick={previousPagePokemon}>{actualPage - 1}</Item>
         )}
-        <Item isSelected = {active}>{active}</Item>
-        <Item  onClick={nextPagePokemon}>{active + 1}</Item>
+        <Item isSelected={active}>{actualPage}</Item>
+        <Item onClick={nextPagePokemon}>{actualPage + 1}</Item>
       </Container>
     </>
-  )
+  );
 }

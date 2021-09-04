@@ -1,16 +1,14 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import {colors }  from '../../colorstyles'
-import {breakpoints}  from '../../breakstyles'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { colors } from "../../colorstyles";
+import { breakpoints } from "../../breakstyles";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: ${colors.yellowGradient};
   height: 100vh;
-  
-  
-  
+
   @media (max-width: ${breakpoints.tablet}) {
     height: auto;
   }
@@ -18,27 +16,27 @@ export const Container = styled.div`
   @media (max-width: ${breakpoints.mobile}) {
     height: auto;
   }
-`
+`;
 export const HeroImgFull = styled.img`
   margin-top: 18px;
   @media (min-width: ${breakpoints.tablet}) {
     display: none;
   }
 
-  @media (max-width:${breakpoints.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
     margin-top: 0;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
     margin-top: 7px;
   }
-`
+`;
 
 export const HeroImg = styled.img`
   position: absolute;
   right: 0;
   top: 154px;
-  
+
   @media (max-width: 1383px) {
     width: 50%;
     top: 20%;
@@ -46,7 +44,7 @@ export const HeroImg = styled.img`
   @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
-`
+`;
 
 export const Text = styled.p`
   font-size: 72px;
@@ -59,7 +57,7 @@ export const Text = styled.p`
     font-size: 50px;
     line-height: 60px;
     letter-spacing: 3px;
-    color:  ${colors.goldGradient};
+    color: ${colors.goldGradient};
     margin-bottom: 30px;
   }
   @media (max-width: ${breakpoints.tablet}) {
@@ -71,15 +69,13 @@ export const Text = styled.p`
     margin-top: 8px;
     margin-bottom: 5.48px;
   }
-
-
-`
+`;
 
 export const Paragraph = styled.p`
   letter-spacing: 2px;
   font-size: 32px;
   line-height: 37px;
-  color:  ${colors.goldGradient};
+  color: ${colors.goldGradient};
   margin-bottom: 64px;
   font-weight: 400;
 
@@ -88,9 +84,8 @@ export const Paragraph = styled.p`
     font-size: 32px;
     line-height: 34px;
     margin-bottom: 30px;
-    
   }
-  @media (max-width:${breakpoints.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
     font-size: 23px;
     line-height: 29px;
   }
@@ -103,7 +98,7 @@ export const Paragraph = styled.p`
   }
   @media (max-width: 1220px) {
   }
-`
+`;
 export const Col = styled.div`
   padding-top: 127px;
   padding-left: 157px;
@@ -111,10 +106,9 @@ export const Col = styled.div`
   display: flex;
   display: flex;
   flex-direction: column;
-  
 
   button {
-    background:${colors.green};
+    background: ${colors.green};
     box-shadow: inset 0px -9px 0px ${colors.shadowgold};
     border-radius: 11px;
     height: 66px;
@@ -126,8 +120,6 @@ export const Col = styled.div`
       background: ${colors.greenBlack};
       color: ${colors.white};
     }
-
-   
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -136,14 +128,14 @@ export const Col = styled.div`
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    padding-bottom:61.95px
+    padding-bottom: 61.95px;
   }
 
   /*  dispositivo mobile  */
 
   @media (max-width: ${breakpoints.mobile}) {
   }
-`
+`;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
@@ -151,5 +143,5 @@ export const StyledLink = styled(Link)`
   font-weight: bold;
   font-size: 23px;
   line-height: 27px;
-  color: ${colors.goldBlack}
-`
+  color: ${colors.goldBlack};
+`;
