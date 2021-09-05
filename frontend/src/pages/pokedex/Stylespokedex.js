@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { colors } from '../../colorstyles'
+import styled from "styled-components";
+import { colors } from "../../Colorstyles";
 
 export const Container = styled.div`
   height: 100vh;
@@ -11,7 +11,7 @@ export const Container = styled.div`
       padding-left: 22px;
     }
   }
-`
+`;
 
 export const Title = styled.div`
   margin-top: 44px;
@@ -33,4 +33,4 @@ export const Title = styled.div`
     margin-left: 33px;
     margin-right: 26px;
   }
-`
+`;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { colors } from "../../colorstyles";
-import { breakpoints } from "../../breakstyles";
+import { colors } from "../../Colorstyles";
+import { breakpoints } from "../../Breakstyles"
 
 export const FooterMain = styled.footer`
   width: 100%;

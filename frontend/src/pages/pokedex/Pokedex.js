@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { usePoke } from "../../components/context/Provider";
 import Search from "./search/Search";
-import api from "../../service/api";
+import api from "../../service/Api";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "query-string";
 

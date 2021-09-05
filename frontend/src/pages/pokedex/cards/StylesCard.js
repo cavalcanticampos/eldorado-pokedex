@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../colorstyles";
+import { colors } from "../../../Colorstyles";
 
 export const ContainerCard = styled.div`
   margin-left: 158px;

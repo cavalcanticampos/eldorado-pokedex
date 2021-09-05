@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import React from "react";
 import Home from "./pages/home/Home";
 import Pokedex from "./pages/pokedex/Pokedex";
-import { ContainerGlobal, GlobalStyle } from "./stylesGlobal";
+import { ContainerGlobal, GlobalStyle } from "./StylesGlobal";
 import PokeProvider from "./components/context/Provider";
 
 function App() {

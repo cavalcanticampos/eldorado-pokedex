@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../../colorstyles";
-import { breakpoints } from "../../breakstyles";
+import { colors } from "../../Colorstyles";
+import { breakpoints } from "../../Breakstyles";
 
 export const Container = styled.div`
   display: flex;
