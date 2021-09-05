@@ -79,12 +79,12 @@ function Pokedex() {
   };
 
   const nextPagePokemon = () => {
-    setActualPage(actualPage + 1);
+    setActualPage((prevState)=> prevState + 1);
     setActive(active + 1);
   };
 
   const previousPagePokemon = () => {
-    setActualPage(actualPage - 1);
+    setActualPage((prevState)=> prevState- 1);
     setActive(active - 1);
   };
 
