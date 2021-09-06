@@ -79,10 +79,10 @@ Before starting, you will need to have the following tools installed on your mac
  * git clone https://github.com/cavalcanticampos/eldorado-pokedex.git
   
  > access the project folder on your terminal/cmd
- * eldorado-pokedex cd
+ * cd eldorado-pokedex 
 
   > go to the Front End application folder
- * frontend cd
+ * cd  frontend
 
 > Run the application in development mode
  * npm install
