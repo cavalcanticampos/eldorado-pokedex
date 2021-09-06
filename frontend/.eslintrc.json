@@ -1,0 +1,33 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "settings": {
+        "version":"detect"
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "react-hooks",
+        "plugin:react-hooks/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+      "react/prop-types":"off",
+      "semi": 2,
+      "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+      "react/react-in-jsx-scope":"off",
+      "@typescript-eslint/explicit-module-boundary-types":"off"
+    }
+}

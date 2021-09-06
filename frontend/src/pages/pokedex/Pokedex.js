@@ -1,91 +1,92 @@
-import React, { useEffect } from 'react'
-import Cards from './cards/Cards'
-
-import { Container, Title } from './Stylespokedex'
-import { getAllPokemon, getPokemon } from '../../service/api'
-import Footer from '../../components/footer/Footer'
-import Header from '../../components/header/Header'
-import { usePoke } from '../../components/context/Provider'
-import Search from './search/Search'
-
+import React, { useEffect, useState } from "react";
+import Cards from "./cards/Cards";
+import { Container, Title } from "./Stylespokedex";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import { usePoke } from "../../components/context/Provider";
+import Search from "./search/Search";
+import api from "../../service/Api";
+import { useLocation, useHistory } from "react-router-dom";
+import qs from "query-string";
 
 function Pokedex() {
   const {
-
     setPokemonData,
     search,
     active,
     setActive,
-    currentOffset,
-    setCurrentOffset,
-  } = usePoke()
+    pokemonData,
+    setInitialdatapokemon,
+    initialdatapokemon
+  } = usePoke();
 
-  const offset = 9
-  const initialURL = `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-    currentOffset * offset
-  }`
-  // console.log(pokemonData)
+  let location = useLocation();
+  let history = useHistory();
+  const [actualPage, setActualPage] = useState(getActualPage() || 1);
 
-  const Searchpokemon = async (name) => {
- 
-    var regex = `${search}`
-    var isSuggestedPokemon = new RegExp(regex,'ig')
-
-    let response = await getAllPokemon(
-      'https://pokeapi.co/api/v2/pokemon?limit=200',
-    )
-    let suggestedPokemons = []
-    response.results.forEach((data) => {
-      if (data.name.match(isSuggestedPokemon)) {
-        suggestedPokemons.push(data)
-      }
-    })
-    await loadPokemon(suggestedPokemons)
-
-    console.log('suggestedPokemons ', suggestedPokemons)
+  function getActualPage() {
+    const queryParams = qs.parse(location.search);
+    const page = queryParams.page;
+    return page ? Number(page) : undefined;
   }
 
   useEffect(() => {
-    async function fetchData() {
-      let response = await getAllPokemon(initialURL)
-      await loadPokemon(response.results)
-    }
-    fetchData()
-  }, [])
-
-  const loadPokemon = async (data) => {
-    let _pokemonData = await Promise.all(
-      data.map(async (pokemon) => {
-        let pokemonRecord = await getPokemon(pokemon)
-        return pokemonRecord
+    const queryParams = qs.parse(location.search);
+    history.push({
+      search: qs.stringify({
+        ...queryParams,
+        page: actualPage,
       }),
-    )
-    setPokemonData(_pokemonData)
-  }
+    });
+  }, [actualPage]);
 
-  const nextPagePokemon = async () => {
-    const currentOffsetAux = currentOffset + 1
-    setCurrentOffset(currentOffset + 1)
-    setActive(active + 1)
-    let response = await getAllPokemon(
-      `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-        currentOffsetAux * offset
-      }`,
-    )
-    await loadPokemon(response.results)
-  }
+  useEffect(() => {
+    if (!search) {
+      setPokemonData(initialdatapokemon);
+      return;
+    }
+  }, [search]);
 
-  const previousPagePokemon = async () => {
-    const currentOffsetAux = currentOffset - 1
-    setCurrentOffset(currentOffset - 1)
-    setActive(active - 1)
-    let response = await getAllPokemon(
-      `https://pokeapi.co/api/v2/pokemon?limit=9S&offset=${
-        currentOffsetAux * offset
-      }`,
-    )
-    await loadPokemon(response.results)
-  }
+  useEffect(() => {
+    async function loadPokemon() {
+      api
+        .get(`/pokemons?page=${actualPage}`)
+        .then((response) => {
+          console.log(response.data);
+          setPokemonData(response.data);
+          setInitialdatapokemon(response.data);
+        })
+        .catch((error) => {
+          console.log("Error getting fake data: " + error);
+        });
+    }
+    loadPokemon();
+  }, [actualPage]);
+
+  const Searchpokemon = async () => {
+    var regex = `${search}`;
+    var isSuggestedPokemon = new RegExp(regex, "ig");
+
+    let suggestedPokemons = [];
+    pokemonData.forEach((data) => {
+      if (data.name.match(isSuggestedPokemon)) {
+        suggestedPokemons.push(data);
+      }
+    });
+    setPokemonData(suggestedPokemons);
+    console.log("suggestedPokemons ", suggestedPokemons);
+    return suggestedPokemons;
+  };
+
+  const nextPagePokemon = () => {
+    setActualPage((prevState)=> prevState + 1);
+    setActive(active + 1);
+  };
+
+  const previousPagePokemon = () => {
+    setActualPage((prevState)=> prevState- 1);
+    setActive(active - 1);
+  };
 
   return (
     <>
@@ -96,13 +97,14 @@ function Pokedex() {
         </Title>
         <Search Searchpokemon={Searchpokemon} />
         <Cards
-          previousPagePokemon={previousPagePokemon}
           nextPagePokemon={nextPagePokemon}
+          previousPagePokemon={previousPagePokemon}
+          actualPage={actualPage}
         />
         <Footer />
       </Container>
     </>
-  )
+  );
 }
 
-export default Pokedex
+export default Pokedex;

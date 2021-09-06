@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { colors } from '../../colorstyles'
-import {breakpoints} from "../../breakstyles";
+import styled from "styled-components";
+import { colors } from "../../Colorstyles";
+import { breakpoints } from "../../Breakstyles"
 
 export const FooterMain = styled.footer`
   width: 100%;
@@ -16,16 +16,13 @@ export const FooterMain = styled.footer`
   & > h3 {
     font-size: 18px;
     line-height: 21px;
-    color: ${colors.goldBlack}
+    color: ${colors.goldBlack};
+  }
 
-    }
+  span {
+    padding: 5px;
+  }
 
-    span{
-      padding: 5px;
-    }    
-
-  
-  
   @media (max-width: ${breakpoints.tablet}) {
     position: static;
     height: auto;
@@ -35,16 +32,14 @@ export const FooterMain = styled.footer`
     display: flex;
     align-items: center;
     padding-bottom: 15px;
-    
+
     justify-content: space-between;
 
     & > :first-child {
       font-weight: 400;
     }
-}
-  
-    
- 
+  }
+
   @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column-reverse;
     padding: 14px;
@@ -55,7 +50,5 @@ export const FooterMain = styled.footer`
     }
   }
   @media (max-width: ${breakpoints.mobile}) {
-   
   }
- 
-`
+`;
