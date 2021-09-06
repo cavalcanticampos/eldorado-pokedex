@@ -2,29 +2,30 @@
 
 A project that uses React and Java and best practices to provide a professional pokedex full of details.
 
-Technologies
+## Technologies
+
 The following tools were used in the construction of the project:
 
 
-React
-Java-Spring boot
-Swagger UI
-UI Figma: https://www.figma.com/file/1tMMZRB3YIReZG8sPEremT/Pokedex-(Community)?node-id=2%3A3
-PokeApi: https://pokeapi.co/
+-React
+-Java-Spring boot
+-Swagger UI
+-UI Figma: https://www.figma.com/file/1tMMZRB3YIReZG8sPEremT/Pokedex-(Community)?node-id=2%3A3
+-PokeApi: https://pokeapi.co/
 
-Setup:
+##Setup:
 
 Clone down this repository. You will need node and npm installed globally on your machine.
 
 Installation: npm install
 npm start  To Visit App: localhost:3000
 
-spring boot installation:
+##spring boot installation:
 
 For building and running the application you need:
 
-   JDK 1.8
-   Maven 3
+   -JDK 1.8
+   -Maven 3
 
  Running the application locally
 
@@ -32,7 +33,7 @@ For building and running the application you need:
 
  Alternatively you can use the Spring Boot Maven plugin like so:
 
-   mvn spring-boot:run
+   -mvn spring-boot:run
 
 
 
