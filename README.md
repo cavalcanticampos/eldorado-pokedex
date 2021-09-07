@@ -18,7 +18,6 @@
 
 ## ⚙️ Tools
 
- > Swagger UI
  
  > Figma UI: https://www.figma.com/file/1tMMZRB3YIReZG8sPEremT/Pokedex-(Community)?node-id=2%3A3
  
@@ -26,7 +25,7 @@
  
  > Heroku: https://dashboard.heroku.com/apps
  
- > swagger: https://swagger.io/
+ > Swagger UI: https://swagger.io/
 
 ## ⚒️ Technologies used
 
