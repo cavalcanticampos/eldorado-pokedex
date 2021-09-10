@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link as LinkR } from "react-router-dom";
+import { Link,NavLink as LinkR } from "react-router-dom";
 import { colors } from "../../Colorstyles";
 import { breakpoints } from "../../Breakstyles";
 

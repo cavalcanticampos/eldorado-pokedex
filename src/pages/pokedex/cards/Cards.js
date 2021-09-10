@@ -31,8 +31,12 @@ export default function Cards({
               </CardsPropContainer>
 
               <CardSkillItems>
-                <span>Ataque</span>
-                <span>Defesa</span>
+                <span>
+                  Ataque
+                </span>
+                <span>
+                  Defesa
+                </span>
               </CardSkillItems>
 
               <CardTag

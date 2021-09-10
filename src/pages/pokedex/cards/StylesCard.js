@@ -82,24 +82,21 @@ export const CardsPropContainer = styled.div`
   }
 
   & > span {
-    height: 18px;
-    width: 23px;
-    height: 36.5px;
-    width: 37.9px;
-    margin-bottom: 5.94px;
+    
+    height: 36.04px;
+    width: 37.95px;
     border: 3px solid ${colors.goldBlack};
     box-sizing: border-box;
     border-radius: 95px;
-    padding: 6px;
     font-size: 15px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: ${colors.goldBlack};
+    display: flex;
+    justify-content:center;
+    align-items:center;
   }
 `;
 export const CardSkillItems = styled.div`
+margin-top: 5.94px;
   margin-bottom: 10.95px;
   & > span {
     font-size: 12px;
