@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link,NavLink as LinkR } from "react-router-dom";
+import { Link,NavLink  } from "react-router-dom";
 import { colors } from "../../Colorstyles";
 import { breakpoints } from "../../Breakstyles";
 
@@ -62,7 +62,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li``;
-export const NavLinks = styled(LinkR)`
+export const NavLinks = styled(NavLink)`
   text-decoration: none;
   font-size: 25px;
   color: ${colors.gold};

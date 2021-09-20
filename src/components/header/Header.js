@@ -49,7 +49,8 @@ function Header() {
                 />
               </MobileItem>
               <MobileItem>
-                <NavLinks  to="/"  activeClassName="selected">
+                <NavLinks  to="/"  activeClassName="selected" >
+    
                   Home
                 </NavLinks>
               </MobileItem>
@@ -62,7 +63,7 @@ function Header() {
 
         <NavMenu>
           <NavItem>
-            <NavLinks  to="/"    activeClassName="selected">
+            <NavLinks  to="/" >
               Home
             </NavLinks>
           </NavItem>
