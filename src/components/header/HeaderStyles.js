@@ -69,10 +69,14 @@ export const NavLinks = styled(LinkR)`
   cursor: pointer;
   padding-bottom: 10px;
 
-  &.active {
+  //&.active {
+   // border-bottom: 3px solid ${colors.goldBlack};
+  //}
+   
+  &.selected{
     border-bottom: 3px solid ${colors.goldBlack};
   }
-
+    
   :hover {
     border-bottom: 3px solid ${colors.goldBlack};
   }

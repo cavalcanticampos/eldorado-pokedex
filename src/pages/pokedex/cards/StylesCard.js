@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../Colorstyles";
+import { Link } from "react-router-dom";
 
 export const ContainerCard = styled.div`
   margin-left: 158px;
@@ -122,7 +123,7 @@ export const CardTag = styled.div`
 
   & > span {
     background: ${(props) =>
-      props.pokeTypeColor ? props.pokeTypeColor : "#73d677"};
+      props.pokeTypeColor ? props.pokeTypeColor : props.backgroundColor};
     box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
     border-radius: 11px;
     font-size: 12px;
@@ -149,4 +150,16 @@ export const CardImg = styled.div`
   text-align: center;
   background: ${(props) => props.backgroundColor};
   border-radius: 0px 8px 8px 0px;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-style: normal;
+  font-size: 17px;
+  color:black;
+  margin-left: 5px;
+ 
+`;
+export const  Iconeimage = styled.div`
+       
 `;

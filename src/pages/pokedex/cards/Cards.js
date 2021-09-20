@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState ,useEffect} from "react";
+import { IoIosArrowDown } from "react-icons/io";
+
+
+
 import {
   ContainerCard,
   WrapperCards,
@@ -8,15 +12,66 @@ import {
   CardSkillItems,
   CardTag,
   CardImg,
+  StyledLink,
+  Iconeimage
 } from "./StylesCard";
 import { Container, Item } from "../pagination/StylesPagination";
 import { usePoke } from "../../../components/context/Provider";
+import { MdSystemUpdateAlt } from "react-icons/md";
+import ModelEdit from "../../modelEdit/ModelEdit";
+import { Link,useHistory, useParams } from "react-router-dom";
+import { IoCloseSharp, IoCreateOutline } from "react-icons/io5";
+import EditPokemon from "../../editPokemon/EditPokemon";
+import api from "../../../service/Api";
 export default function Cards({
   nextPagePokemon,
   previousPagePokemon,
   actualPage,
 }) {
   const { pokemonData, active } = usePoke();
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [sprite, setSprite] = useState("");
+  const [attack, setAttack] = useState("");
+  const [defense, setDefense] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+  const [modal, setModal] = useState(true);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  const history = useHistory();
+  const { id } = useParams();
+
+  console.log(id);
+  useEffect(() => {
+    api.get(`/pokemon/${id}`).then((response) => {
+      console.log(response);
+      setName(response.data);
+      setType(response.data);
+      setSprite(response.data);
+      setAttack(response.data);
+      setDefense(response.data);
+      setBackgroundColor(response.data);
+    });
+  }, []);
+
+  async function handleCreate(ev) {
+    ev.preventDefault();
+    const data = { name, type, sprite, attack, defense, backgroundColor };
+
+    try {
+      const response = await api.put(`/pokemon/${id}`, data);
+      alert("Atualizaçao  realizado com sucesso");
+      history.push("/Pokedex");
+    } catch (err) {
+      alert("Erro na atualizaço, tente novamente");
+      console.log(err);
+    }
+  }
+  
 
   return (
     <>
@@ -31,12 +86,8 @@ export default function Cards({
               </CardsPropContainer>
 
               <CardSkillItems>
-                <span>
-                  Ataque
-                </span>
-                <span>
-                  Defesa
-                </span>
+                <span>Ataque</span>
+                <span>Defesa</span>
               </CardSkillItems>
 
               <CardTag
@@ -50,6 +101,57 @@ export default function Cards({
             <CardImg backgroundColor={pokemon.backgroundColor}>
               <img src={pokemon.sprite} alt={pokemon.name} />
             </CardImg>
+           
+            <StyledLink to={`/edit/${pokemon.id}`}>
+              <MdSystemUpdateAlt />
+            </StyledLink>
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </WrapperCards>
         ))}
       </ContainerCard>

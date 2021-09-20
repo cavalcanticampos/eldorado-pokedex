@@ -18,6 +18,8 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  
 
   & > h3 {
     font-style: normal;
@@ -25,6 +27,7 @@ export const Title = styled.div`
     font-size: 35px;
     line-height: 41px;
     text-align: center;
+    display: flex;
 
     color: ${colors.gold};
   }

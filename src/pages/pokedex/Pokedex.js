@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./cards/Cards";
-import { Container, Title } from "./Stylespokedex";
+import { Container, Title, StyledLink } from "./Stylespokedex";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { usePoke } from "../../components/context/Provider";
@@ -8,6 +8,8 @@ import Search from "./search/Search";
 import api from "../../service/Api";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "query-string";
+import Modal from "../modal/Modal";
+import { Link } from "react-router-dom";
 
 function Pokedex() {
   const {
@@ -17,8 +19,12 @@ function Pokedex() {
     setActive,
     pokemonData,
     setInitialdatapokemon,
-    initialdatapokemon
+    initialdatapokemon,
   } = usePoke();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   let location = useLocation();
   let history = useHistory();
@@ -79,12 +85,12 @@ function Pokedex() {
   };
 
   const nextPagePokemon = () => {
-    setActualPage((prevState)=> prevState + 1);
+    setActualPage((prevState) => prevState + 1);
     setActive(active + 1);
   };
 
   const previousPagePokemon = () => {
-    setActualPage((prevState)=> prevState- 1);
+    setActualPage((prevState) => prevState - 1);
     setActive(active - 1);
   };
 
@@ -93,14 +99,17 @@ function Pokedex() {
       <Header />
       <Container>
         <Title>
-          <h3>Pokemons para você escolher o seu favorito</h3>
+          <h3>Pokemons para escolher  ou criar aqui &nbsp;  <Modal />  </h3>
+          
         </Title>
+
         <Search Searchpokemon={Searchpokemon} />
         <Cards
           nextPagePokemon={nextPagePokemon}
           previousPagePokemon={previousPagePokemon}
           actualPage={actualPage}
         />
+
         <Footer />
       </Container>
     </>

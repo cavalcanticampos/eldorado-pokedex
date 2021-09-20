@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/Logo.png"
+import  './Header.css'
 import {
   MobileContainer,
   MobileItem,
@@ -16,6 +17,7 @@ import {
 
 function Header() {
   const [open, setOpen] = useState(false);
+ 
 
   return (
     <NavContainer>
@@ -47,12 +49,12 @@ function Header() {
                 />
               </MobileItem>
               <MobileItem>
-                <NavLinks className="active" to="/">
+                <NavLinks  to="/"  activeClassName="selected">
                   Home
                 </NavLinks>
               </MobileItem>
               <MobileItem>
-                <NavLinks to="/Pokedex">Pokedex</NavLinks>
+                <NavLinks to="/Pokedex"  activeClassName="selected">Pokedex</NavLinks>
               </MobileItem>
             </MobileContainer>
           </>
@@ -60,12 +62,12 @@ function Header() {
 
         <NavMenu>
           <NavItem>
-            <NavLinks className="active" to="/">
+            <NavLinks  to="/"    activeClassName="selected">
               Home
             </NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/Pokedex">Pokedex</NavLinks>
+            <NavLinks to="/Pokedex" activeClassName="selected">Pokedex</NavLinks>
           </NavItem>
         </NavMenu>
       </Nav>
