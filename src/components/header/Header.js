@@ -13,6 +13,7 @@ import {
   NavMenu,
   NavItem,
   NavLinks,
+  activeClassName
 } from "./HeaderStyles";
 
 function Header() {
@@ -55,7 +56,7 @@ function Header() {
                 </NavLinks>
               </MobileItem>
               <MobileItem>
-                <NavLinks to="/Pokedex"  activeClassName="selected">Pokedex</NavLinks>
+                <NavLinks to="/Pokedex" activeClassName="selected"   >Pokedex</NavLinks>
               </MobileItem>
             </MobileContainer>
           </>
@@ -63,12 +64,10 @@ function Header() {
 
         <NavMenu>
           <NavItem>
-            <NavLinks  to="/" >
-              Home
-            </NavLinks>
+            <NavLinks  exact to="/"activeClassName  >Home </NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/Pokedex" activeClassName="selected">Pokedex</NavLinks>
+            <NavLinks to="/Pokedex" activeClassName >Pokedex</NavLinks>
           </NavItem>
         </NavMenu>
       </Nav>

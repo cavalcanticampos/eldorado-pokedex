@@ -73,9 +73,12 @@ export const NavLinks = styled(NavLink)`
    // border-bottom: 3px solid ${colors.goldBlack};
   //}
    
-  &.selected{
+  &.${props => props.activeClassName} {
     border-bottom: 3px solid ${colors.goldBlack};
   }
+
+   
+ 
     
   :hover {
     border-bottom: 3px solid ${colors.goldBlack};
