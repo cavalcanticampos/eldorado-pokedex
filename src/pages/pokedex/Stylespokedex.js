@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../Colorstyles";
+import { useLocation, useHistory, Link } from "react-router-dom";
+
 
 export const Container = styled.div`
   height: 100vh;
@@ -36,4 +38,13 @@ export const Title = styled.div`
     margin-left: 33px;
     margin-right: 26px;
   }
+`;
+export const StyledLinke = styled(Link)`
+  text-decoration: none;
+  font-style: normal;
+  font-size: 17px;
+  color:black;
+  margin-left: 5px;
+  cursor: pointer;
+ 
 `;

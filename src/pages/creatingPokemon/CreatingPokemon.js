@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import api from "../../service/Api";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { usePoke } from "../../components/context/Provider";
 import { colors } from "../../Colorstyles";
-import { IoIosArrowDown } from "react-icons/io";
 import './CreatingPokemon.css'
+import New from "../../assets/New.png";
+
 
 
 function CreatingPokemon() {
@@ -81,21 +82,22 @@ function CreatingPokemon() {
 
   console.log(type);
 
-  return (
-    <div className="container">
-     
 
-      <div className="content-form">
-        <form onSubmit={handleCreate}>
+  return (
+    <div className="content-main">
+      <div className="content">
+        <img src={New} alt="" className="form-img" />
+
+        <form onSubmit={handleCreate} className="form-main">
+          <h1>Crie seu Pokemon</h1>
           <div className="input-block">
             <label htmlFor="name">Nome</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={name.name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <input 
+            id="name"
+             type="text" 
+             name="name"
+              value={name.name} 
+              onChange={(e) => setName(e.target.value)} />
           </div>
 
           <div className="input-block">
@@ -130,37 +132,44 @@ function CreatingPokemon() {
               onChange={(e) => setDefense(e.target.value)}
             />
           </div>
-           <div className="content-type">
 
-           <select onChange={(e) => setType(e.target.value)} value={type.type}className="selected-type" >
-            <option value="water">water</option>
-            <option value="fire">fire</option>
-            <option value="normal">normal</option>
-            <option value="fighting">fighting</option>
-            <option value="flyig">flying</option>
-            <option  value="poison">poison</option>
-            <option value="ground">ground</option>
-            <option value="rock">rock</option>
-            <option value="bug">bug</option>
-            <option value="ghost">ghost</option>
-            <option value="steel">steel</option>
-            <option value="grass">grass</option>
-            <option value="electric">electric</option>
-            <option value="psychic">psychic</option>
-            <option value="ice">ice</option>
-            <option value="dragon">dragon</option>
-            <option value="dark">dark</option>
-            <option value="fairy">fairy</option>
-            <option value="unknow">unknown</option>
-            <option value="shadow">shadow</option>
-          </select>
-        
-        
-           </div>
+          <div className="content-type">
+            <select
+              onChange={(e) => setType(e.target.value)}
+              value={type.type}
+              className="selected-type"
+            >
+              <option value="water">water</option>
+              <option value="fire">fire</option>
+              <option value="normal">normal</option>
+              <option value="fighting">fighting</option>
+              <option value="flyig">flying</option>
+              <option value="poison">poison</option>
+              <option value="ground">ground</option>
+              <option value="rock">rock</option>
+              <option value="bug">bug</option>
+              <option value="ghost">ghost</option>
+              <option value="steel">steel</option>
+              <option value="grass">grass</option>
+              <option value="electric">electric</option>
+              <option value="psychic">psychic</option>
+              <option value="ice">ice</option>
+              <option value="dragon">dragon</option>
+              <option value="dark">dark</option>
+              <option value="fairy">fairy</option>
+              <option value="unknow">unknown</option>
+              <option value="shadow">shadow</option>
+            </select>
+          </div>
 
           <div className="btn-content">
             <button type="submit" className="input-btn">
               Salvar
+            </button>
+            <button className="input-btn2">
+            <Link className="bt-link"to="/pokedex">
+            <span>Cancelar</span>
+          </Link>
             </button>
           </div>
         </form>
@@ -168,5 +177,6 @@ function CreatingPokemon() {
     </div>
   );
 }
+
 
 export default CreatingPokemon;
